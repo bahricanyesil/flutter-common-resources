@@ -56,7 +56,7 @@ class _FailedAppInitState extends State<FailedAppInit> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: CustomPaddings.large,
+        padding: CustomPaddings.large.copyWith(top: 40, bottom: 40),
         child: Center(
           child: ValueListenableBuilder<bool>(
             valueListenable: _inProgress,

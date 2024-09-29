@@ -5,18 +5,48 @@ import '../app_colors.dart';
 /// Default theme helper for the app.
 abstract final class DefaultThemeHelper {
   /// Default theme data for the app.
-  static ThemeData defaultThemeData({bool isDark = true}) => ThemeData(
-        useMaterial3: true,
-        colorScheme: defaultColorScheme(isDark: isDark),
-        textTheme: defaultTextTheme(isDark: isDark),
-        dropdownMenuTheme: defaultDropdownMenuThemeData(isDark: isDark),
-        inputDecorationTheme: defaultInputDecorationTheme(isDark: isDark),
-      );
+  static ThemeData defaultThemeData({
+    bool isDark = true,
+    Color? primaryColor,
+    Color? scaffoldBackgroundColor,
+    Color? appBarBackgroundColor,
+    Color? appBarForegroundColor,
+    Color? cardColor,
+    Color? iconColor,
+  }) {
+    final ColorScheme colorScheme = defaultColorScheme(
+      isDark: isDark,
+      primaryColor: primaryColor,
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      brightness: isDark ? Brightness.dark : Brightness.light,
+      colorScheme: colorScheme,
+      textTheme: defaultTextTheme(isDark: isDark),
+      dropdownMenuTheme: defaultDropdownMenuThemeData(isDark: isDark),
+      inputDecorationTheme: defaultInputDecorationTheme(isDark: isDark),
+      appBarTheme: defaultAppBarTheme(
+        isDark: isDark,
+        backgroundColor: appBarBackgroundColor,
+        foregroundColor: appBarForegroundColor,
+      ),
+      buttonTheme: defaultButtonTheme(isDark: isDark),
+      iconTheme: defaultIconTheme(isDark: isDark, color: iconColor),
+      cardTheme: defaultCardTheme(isDark: isDark, color: cardColor),
+      scaffoldBackgroundColor: scaffoldBackgroundColor ??
+          (isDark ? AppColors.darkScaffold : AppColors.lightScaffold),
+    );
+  }
 
   /// Default color scheme for the app.
-  static ColorScheme defaultColorScheme({bool isDark = true}) => isDark
-      ? const ColorScheme.dark(primary: AppColors.primary)
-      : const ColorScheme.light(primary: AppColors.primary);
+  static ColorScheme defaultColorScheme({
+    bool isDark = true,
+    Color? primaryColor,
+  }) =>
+      isDark
+          ? ColorScheme.dark(primary: primaryColor ?? AppColors.primary)
+          : ColorScheme.light(primary: primaryColor ?? AppColors.primary);
 
   /// Default text theme for the app.
   static TextTheme defaultTextTheme({bool isDark = true}) {
@@ -172,4 +202,47 @@ abstract final class DefaultThemeHelper {
           defaultTextTheme().labelMedium?.copyWith(color: AppColors.primary),
     );
   }
+
+  /// Default app bar theme for the app.
+  static AppBarTheme defaultAppBarTheme({
+    bool isDark = true,
+    Color? backgroundColor,
+    Color? foregroundColor,
+  }) =>
+      AppBarTheme(
+        backgroundColor: backgroundColor ??
+            (isDark ? AppColors.darkAppBar : AppColors.lightAppBar),
+        foregroundColor:
+            foregroundColor ?? (isDark ? Colors.white : Colors.black),
+        elevation: 0,
+        titleTextStyle: defaultTextTheme(isDark: isDark).headlineMedium,
+        iconTheme: defaultIconTheme(isDark: isDark),
+      );
+
+  /// Default button theme for the app.
+  static ButtonThemeData defaultButtonTheme({bool isDark = true}) =>
+      const ButtonThemeData(
+        buttonColor: AppColors.primary,
+        textTheme: ButtonTextTheme.primary,
+      );
+
+  /// Default icon theme for the app.
+  static IconThemeData defaultIconTheme({
+    bool isDark = true,
+    Color? color,
+  }) =>
+      IconThemeData(
+        color: color ?? (isDark ? Colors.white : Colors.black),
+      );
+
+  /// Default card theme for the app.
+  static CardTheme defaultCardTheme({
+    bool isDark = true,
+    Color? color,
+  }) =>
+      CardTheme(
+        color: color ?? (isDark ? Colors.grey[800] : Colors.white),
+        elevation: 4,
+        margin: const EdgeInsets.all(8),
+      );
 }

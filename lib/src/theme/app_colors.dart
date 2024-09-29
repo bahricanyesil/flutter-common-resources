@@ -64,4 +64,16 @@ abstract final class AppColors {
 
   /// The dark grey color.
   static const Color darkGrey = Color(0xffa9a9a9);
+
+  /// Scaffold background color for dark theme.
+  static const Color darkScaffold = Color(0xFF121212);
+
+  /// Scaffold background color for light theme.
+  static const Color lightScaffold = Color(0xFFFFFFFF);
+
+  /// App bar background color for dark theme.
+  static const Color darkAppBar = Color(0xFF1F1F1F);
+
+  /// App bar background color for light theme.
+  static const Color lightAppBar = Color(0xFFFFFFFF);
 }

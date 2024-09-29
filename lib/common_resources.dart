@@ -2,6 +2,7 @@
 /// in Flutter apps.
 library common_resources;
 
+export 'src/bloc/bloc.dart';
 export 'src/constants/constants.dart';
 export 'src/decorations/decorations.dart';
 export 'src/di/di.dart';

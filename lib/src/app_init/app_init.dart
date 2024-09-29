@@ -8,8 +8,17 @@ import 'package:flutter_common_resources/common_resources.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:log_manager/log_manager.dart';
 
+import 'failed_app_init.dart';
+
 /// Type definition for the app builder.
 typedef AppBuilder = Widget Function({required AppInitResult result});
+
+/// Type definition for the failed app init widget.
+typedef FailedAppBuilder = MaterialApp Function({
+  required Object error,
+  required StackTrace stackTrace,
+  required AsyncCallback retryInit,
+});
 
 /// This class is responsible for initializing the application.
 /// It ensures that the Flutter framework is initialized and sets up
@@ -24,6 +33,7 @@ abstract final class AppInit {
   /// This method should be called at the beginning of the application.
   static Future<void> initializeAndRun({
     required AppBuilder appBuilder,
+    FailedAppBuilder? failedAppInit,
     LogManager? logManager,
     AsyncCallback? firebaseInitializer,
     AnyCallback? dependencyInitializer,
@@ -66,7 +76,13 @@ abstract final class AppInit {
 
         runApp(appBuilder(result: result));
       } catch (e, stackTrace) {
-        _failedInitHandler(logManager, e, stackTrace, initAndRunApp);
+        _failedInitHandler(
+          logManager,
+          e,
+          stackTrace,
+          initAndRunApp,
+          customFailedApp: failedAppInit,
+        );
       } finally {
         FlutterNativeSplash.remove();
       }
@@ -108,16 +124,26 @@ abstract final class AppInit {
     LogManager? logManager,
     Object e,
     StackTrace stackTrace,
-    AsyncCallback initAndRunApp,
-  ) {
+    AsyncCallback initAndRunApp, {
+    FailedAppBuilder? customFailedApp,
+  }) {
     logManager?.lError(
       '❌ Initialization failed',
       error: e,
       stackTrace: stackTrace,
     );
+    if (customFailedApp != null) {
+      return runApp(
+        customFailedApp(
+          error: e,
+          stackTrace: stackTrace,
+          retryInit: initAndRunApp,
+        ),
+      );
+    }
     runApp(
       MaterialApp(
-        home: FailedInitApp(
+        home: FailedAppInit(
           error: e,
           stackTrace: stackTrace,
           retryInit: initAndRunApp,

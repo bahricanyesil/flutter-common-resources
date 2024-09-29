@@ -12,14 +12,14 @@ final class DI {
   /// Initializes the dependencies for the application.
   const DI({
     required this.dependencyInitializer,
-    required this.mapperInitializer,
+    this.mapperInitializer,
   });
 
   /// The callback to initialize the dependencies.
   final AnyCallback dependencyInitializer;
 
   /// The callback to initialize the mappers.
-  final VoidCallback mapperInitializer;
+  final VoidCallback? mapperInitializer;
 
   static final GetIt _getIt = GetIt.I;
 
@@ -28,7 +28,7 @@ final class DI {
     log('Setting up dependencies...');
     final Stopwatch stopwatch = Stopwatch()..start();
     await dependencyInitializer();
-    mapperInitializer();
+    mapperInitializer?.call();
     log('Dependencies set up in ${stopwatch.elapsedMilliseconds}ms');
     stopwatch.stop();
     final AppInitResult result =

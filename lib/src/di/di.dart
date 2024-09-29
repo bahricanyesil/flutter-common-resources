@@ -1,8 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_common_resources/common_resources.dart';
 import 'package:get_it/get_it.dart';
+
+import '../constants/custom_type_definitions.dart';
+import '../exceptions/unregistered_di_exception.dart';
+import 'app_init_result.dart';
 
 export 'app_init_result.dart';
 

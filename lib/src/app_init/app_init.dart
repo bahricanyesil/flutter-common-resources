@@ -8,7 +8,7 @@ import 'package:flutter_common_resources/common_resources.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:log_manager/log_manager.dart';
 
-import 'failed_app_init.dart';
+part 'failed_app_init.dart';
 
 /// Type definition for the app builder.
 typedef AppBuilder = Widget Function({required AppInitResult result});

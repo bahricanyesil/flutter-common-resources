@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_common_resources/common_resources.dart';
+part of 'app_init.dart';
 
 /// A widget that displays an error message and stack trace when
 /// initialization fails.

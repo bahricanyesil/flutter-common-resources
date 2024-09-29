@@ -4,6 +4,7 @@ library common_resources;
 
 export 'src/constants/constants.dart';
 export 'src/decorations/decorations.dart';
+export 'src/di/di.dart';
 export 'src/exceptions/exceptions.dart';
 export 'src/extensions/extensions.dart';
 export 'src/models/models.dart';

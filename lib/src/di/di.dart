@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_common_resources/common_resources.dart';
 import 'package:get_it/get_it.dart';
 
-import 'app_init_result.dart';
+export 'app_init_result.dart';
 
 /// A class that initializes the dependencies for the application.
 @immutable

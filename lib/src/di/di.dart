@@ -11,12 +11,12 @@ export 'app_init_result.dart';
 final class DI {
   /// Initializes the dependencies for the application.
   const DI({
-    required this.dependencyInitializer,
+    this.dependencyInitializer,
     this.mapperInitializer,
   });
 
   /// The callback to initialize the dependencies.
-  final AnyCallback dependencyInitializer;
+  final AnyCallback? dependencyInitializer;
 
   /// The callback to initialize the mappers.
   final VoidCallback? mapperInitializer;
@@ -27,7 +27,7 @@ final class DI {
   Future<AppInitResult> setUp() async {
     log('Setting up dependencies...');
     final Stopwatch stopwatch = Stopwatch()..start();
-    await dependencyInitializer();
+    await dependencyInitializer?.call();
     mapperInitializer?.call();
     log('Dependencies set up in ${stopwatch.elapsedMilliseconds}ms');
     stopwatch.stop();

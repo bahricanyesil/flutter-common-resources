@@ -29,6 +29,9 @@ dependencies:
   # Bloc
   flutter_bloc: ^8.1.6
 
+  # Splash
+  flutter_native_splash: ^2.4.1
+
 dev_dependencies:
   # Lint
   lint_rules:

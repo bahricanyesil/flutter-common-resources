@@ -2,10 +2,11 @@ import 'package:flutter/foundation.dart';
 
 /// Custom exception thrown when a dependency is not registered.
 @immutable
-final class UnregisteredDependencyException implements Exception {
-  /// Constructor for UnregisteredDependencyException.
-  const UnregisteredDependencyException({
+final class UnregisteredDIException implements Exception {
+  /// Constructor for UnregisteredDIException.
+  const UnregisteredDIException({
     required this.dependencyType,
+    required this.stackTrace,
     this.instanceName,
   });
 
@@ -15,10 +16,13 @@ final class UnregisteredDependencyException implements Exception {
   /// The name of the instance of the dependency that is not registered.
   final String? instanceName;
 
+  /// The stack trace of the exception.
+  final StackTrace? stackTrace;
+
   @override
   String toString() {
     final String instanceNameStr =
         instanceName != null ? ' with name $instanceName' : '';
-    return '''UnRegisteredDependencyException: No registered dependency of type $dependencyType$instanceNameStr.''';
+    return '''Unregistered: No registered dependency of type $dependencyType$instanceNameStr. stackTrace: $stackTrace''';
   }
 }

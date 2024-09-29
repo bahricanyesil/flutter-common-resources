@@ -17,6 +17,10 @@ dependencies:
   # Models
   equatable: ^2.0.5
 
+  # Dependency Injection
+  get_it: ^8.0.0
+
+
 dev_dependencies:
   # Lint
   lint_rules:

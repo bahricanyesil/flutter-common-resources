@@ -1,0 +1,149 @@
+# Name of the workflow
+name: Flutter Test and Analysis Workflow
+
+# Event that triggers the workflow
+on:
+  workflow_call:
+    inputs:
+      analyze_directories:
+        required: false
+        type: string
+        default: "lib test"
+      concurrency_count:
+        required: false
+        type: number
+        default: 4
+      coverage_excludes:
+        required: false
+        type: string
+        default: ""
+      flutter_channel:
+        required: false
+        type: string
+        default: "stable"
+      flutter_version:
+        required: false
+        type: string
+        default: ""
+      format_directories:
+        required: false
+        type: string
+        default: "lib test"
+      format_line_length:
+        required: false
+        type: string
+        default: "80"
+      min_coverage:
+        required: false
+        type: number
+        default: 100
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      setup:
+        required: false
+        type: string
+        default: ""
+      test_optimization:
+        required: false
+        type: boolean
+        default: true
+      test_recursion:
+        required: false
+        type: boolean
+        default: false
+      working_directory:
+        required: false
+        type: string
+        default: "."
+      package_get_excludes:
+        required: false
+        type: string
+        default: "!*"
+    secrets:
+      ssh_key:
+        required: false
+
+# Job definition
+jobs:
+  format-and-analyze:
+    # Set default values for all run steps
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+
+    # Specify the operating system for the job
+    runs-on: ${{inputs.runs_on}}
+
+    # Steps to be executed in the job
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step to set up Flutter
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          # Use the specified Flutter version or fallback to the default
+          flutter-version: ${{inputs.flutter_version}}
+          # Use the specified Flutter channel or fallback to the default (stable)
+          channel: ${{inputs.flutter_channel}}
+          # Enable caching and generate a unique cache key based on pubspec.lock
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      # Step to set an SSH key if provided
+      - name: 🤫 Set SSH Key
+        env:
+          ssh_key: ${{secrets.ssh_key}}
+        # Conditionally set an SSH key only if it is provided
+        if: env.ssh_key != null
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{secrets.ssh_key}}
+
+      # Step to install dependencies
+      - name: 📦 Install Dependencies
+        run: |
+          flutter pub global activate very_good_cli
+          flutter pub global activate melos
+          melos bootstrap --ignore="${{inputs.package_get_excludes}}"
+
+      # Step to run setup commands if provided
+      - name: ⚙️ Run Setup
+        if: "${{inputs.setup != ''}}"
+        run: ${{inputs.setup}}
+
+      # Step to check and format code
+      - name: ✨ Check Formatting
+        run: dart format --line-length ${{inputs.format_line_length}} --set-exit-if-changed ${{inputs.format_directories}}
+
+      - name: Download Generated Files
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: generated-secret-files
+
+      - name: 🏃‍♀️ Generate Build Runner Files
+        continue-on-error: true
+        run: melos run generate
+
+      # Step to analyze code
+      - name: 🕵️ Analyze
+        run: melos run analyze
+
+      # Step to run tests
+      - name: 🧪 Run Tests
+        run: melos run test
+
+      # - name: Upload Coverage to Codecov
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     directory: coverage
+      #     flags: unittests
+      #     name: codecov-umbrella
+      #     fail_ci_if_error: true

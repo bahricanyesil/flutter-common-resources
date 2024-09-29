@@ -26,6 +26,12 @@ dependencies:
       url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
       path: packages/log_manager
 
+  # Theme
+  theme_manager:
+    git:
+      url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
+      path: packages/theme_manager
+
   # Bloc
   flutter_bloc: ^8.1.6
 

@@ -10,4 +10,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Internationalization
   intl: ^0.19.0
+
+  # Models
+  equatable: ^2.0.5
+
+dev_dependencies:
+  # Lint
+  lint_rules:
+    git:
+      url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
+      path: packages/lint_rules

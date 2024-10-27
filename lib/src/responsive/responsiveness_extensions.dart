@@ -24,6 +24,19 @@ extension ResponsivenessExtensions on BuildContext {
   double fs(double fontSize) =>
       select((ResponsiveProvider p) => p.getFontSize(fontSize));
 
+  /// Gets device specific factored width.
+  double deviceW(double widthFactor) =>
+      select((ResponsiveProvider p) => p.getDeviceDependentWidth(widthFactor));
+
+  /// Gets device specific factored height.
+  double deviceH(double heightFactor) => select(
+        (ResponsiveProvider p) => p.getDeviceDependentHeight(heightFactor),
+      );
+
+  /// Gets the device specific factored font size.
+  double deviceFs(double fontSize) =>
+      select((ResponsiveProvider p) => p.getDeviceDependentFontSize(fontSize));
+
   /// Gets whether the device is in portrait or landscape mode.
   bool get isPortrait => select((ResponsiveProvider p) => p.isPortrait);
 

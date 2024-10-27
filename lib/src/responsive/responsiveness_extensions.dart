@@ -60,4 +60,16 @@ extension ResponsivenessExtensions on BuildContext {
         unknownBuilder?.call(this) ?? mobileBuilder(this),
     };
   }
+
+  /// Builds horizontal box with responsive width.
+  SizedBox hBox(double heightF) => SizedBox(height: h(heightF));
+
+  /// Builds vertical box with responsive height.
+  SizedBox wBox(double widthF) => SizedBox(width: w(widthF));
+
+  /// Builds horizontal box with device specific width.
+  SizedBox hDeviceBox(double widthF) => SizedBox(width: deviceH(widthF));
+
+  /// Builds vertical box with device specific height.
+  SizedBox wDeviceBox(double heightF) => SizedBox(height: deviceW(heightF));
 }

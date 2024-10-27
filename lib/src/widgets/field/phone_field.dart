@@ -15,6 +15,7 @@ final class PhoneField extends BaseStatefulWidget {
     this.valueChangeCallback,
     this.validator,
     this.labelText,
+    this.inputDecoration,
     super.key,
   });
 
@@ -35,6 +36,9 @@ final class PhoneField extends BaseStatefulWidget {
 
   /// Label text for the name field.
   final String? labelText;
+
+  /// Custom input decoration.
+  final InputDecoration? inputDecoration;
 
   @override
   BaseState<PhoneField> createState() => _PhoneFieldState();

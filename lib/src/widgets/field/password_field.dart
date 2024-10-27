@@ -17,6 +17,7 @@ final class PasswordField extends BaseStatefulWidget {
     this.valueChangeCallback,
     this.validator,
     this.labelText,
+    this.inputDecoration,
     super.key,
   });
 
@@ -37,6 +38,9 @@ final class PasswordField extends BaseStatefulWidget {
 
   /// Label text for the name field.
   final String? labelText;
+
+  /// Custom input decoration.
+  final InputDecoration? inputDecoration;
 
   @override
   BaseState<PasswordField> createState() => _PasswordFieldState();

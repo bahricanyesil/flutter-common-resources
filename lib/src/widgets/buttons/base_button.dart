@@ -20,7 +20,7 @@ base class BaseButton extends BaseStatefulWidget {
     required this.onPressed,
     this.color,
     this.textColor,
-    this.borderRadius = 10,
+    this.borderRadius = 12,
     this.padding,
     this.animationDuration = const Duration(milliseconds: 400),
     this.isActive,
@@ -171,7 +171,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
   double get _indicatorWidth =>
       _buttonHeight - _buttonPadding.vertical - context.h(2.5);
 
-  double get _buttonHeight => widget.height ?? context.h(6.8);
+  double get _buttonHeight => widget.height ?? context.h(6.2);
 
   double _buttonWidth(BuildContext context) {
     final double activeWidth = widget.width ?? (context.deviceW(80));

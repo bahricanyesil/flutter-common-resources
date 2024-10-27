@@ -190,31 +190,31 @@ abstract final class DefaultThemeHelper {
       suffixIconColor: colorScheme?.primary ?? DefaultAppColors.primary,
       prefixIconColor: colorScheme?.primary ?? DefaultAppColors.primary,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(
           color:
               isDark ? DefaultAppColors.whiteText : DefaultAppColors.blackText,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(
           color:
               isDark ? DefaultAppColors.whiteText : DefaultAppColors.blackText,
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide:
             BorderSide(color: colorScheme?.primary ?? DefaultAppColors.primary),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide:
             BorderSide(color: colorScheme?.error ?? DefaultAppColors.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide:
             BorderSide(color: colorScheme?.error ?? DefaultAppColors.error),
       ),

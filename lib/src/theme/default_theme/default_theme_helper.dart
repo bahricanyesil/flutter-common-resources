@@ -60,81 +60,81 @@ abstract final class DefaultThemeHelper {
         .copyWith(
           displayLarge: baseTextTheme.displayLarge?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 55,
+            fontSize: 56,
             fontWeight: FontWeight.w800,
           ),
           displayMedium: baseTextTheme.displayMedium?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 43,
+            fontSize: 44,
             fontWeight: FontWeight.w700,
           ),
           displaySmall: baseTextTheme.displaySmall?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 34,
+            fontSize: 35,
             fontWeight: FontWeight.w600,
           ),
           headlineLarge: baseTextTheme.headlineLarge?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 30,
+            fontSize: 31,
             fontWeight: FontWeight.w700,
           ),
           headlineMedium: baseTextTheme.headlineMedium?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 26,
+            fontSize: 27,
             fontWeight: FontWeight.w600,
           ),
           headlineSmall: baseTextTheme.headlineSmall?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 23,
+            fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
           titleLarge: baseTextTheme.titleLarge?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 20,
+            fontSize: 21,
             fontWeight: FontWeight.w600,
           ),
           titleMedium: baseTextTheme.titleMedium?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: FontWeight.w500,
           ),
           titleSmall: baseTextTheme.titleSmall?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: FontWeight.w400,
           ),
           bodyLarge: baseTextTheme.bodyLarge?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 13.5,
+            fontSize: 14.5,
             fontWeight: FontWeight.w400,
           ),
           bodyMedium: baseTextTheme.bodyMedium?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: FontWeight.w400,
           ),
           bodySmall: baseTextTheme.bodySmall?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: FontWeight.w300,
           ),
           labelLarge: baseTextTheme.labelLarge?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
           ),
           labelMedium: baseTextTheme.labelMedium?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: FontWeight.w300,
           ),
           labelSmall: baseTextTheme.labelSmall?.copyWith(
             fontFamily: fontFamily,
-            fontSize: 9,
+            fontSize: 10,
             fontWeight: FontWeight.w200,
           ),
         )
-        .apply(fontFamily: fontFamily, fontSizeFactor: 1.08);
+        .apply(fontFamily: fontFamily, fontSizeFactor: 1.12);
   }
 
   /// Default dropdown menu theme data for the app.

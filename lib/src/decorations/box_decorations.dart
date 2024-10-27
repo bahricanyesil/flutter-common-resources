@@ -12,8 +12,7 @@ abstract final class BoxDecorations {
   );
 
   /// The default button decoration.
-  static BoxDecoration defaultButton(
-    BuildContext context, {
+  static BoxDecoration defaultButton({
     required Color color,
     Color? inactiveColor,
     bool isActive = true,

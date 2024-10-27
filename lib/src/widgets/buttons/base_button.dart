@@ -144,8 +144,8 @@ class _BaseButtonState extends BaseState<BaseButton> {
   EdgeInsets get _buttonPadding =>
       widget.padding ??
       EdgeInsets.symmetric(
-        horizontal: context.deviceW(16),
-        vertical: context.deviceH(8),
+        horizontal: context.deviceW(2),
+        vertical: context.deviceH(1),
       );
 
   Center _stateSwitcher() {
@@ -166,16 +166,13 @@ class _BaseButtonState extends BaseState<BaseButton> {
   }
 
   Widget _loadingIndicator() {
-    return SpinKitSpinningLines(
-      color: Colors.white,
-      size: _indicatorWidth,
-    );
+    return SpinKitSpinningLines(color: Colors.white, size: _indicatorWidth);
   }
 
   double get _indicatorWidth =>
-      _buttonHeight - _buttonPadding.vertical - context.h(3);
+      _buttonHeight - _buttonPadding.vertical - context.h(2.5);
 
-  double get _buttonHeight => widget.height ?? context.h(40);
+  double get _buttonHeight => widget.height ?? context.h(6.8);
 
   double _buttonWidth(BuildContext context) {
     final double activeWidth = widget.width ?? (context.deviceW(80));

@@ -20,7 +20,7 @@ base class BaseButton extends BaseStatefulWidget {
     required this.onPressed,
     this.color,
     this.textColor,
-    this.borderRadius = 20,
+    this.borderRadius = 10,
     this.padding,
     this.animationDuration = const Duration(milliseconds: 400),
     this.isActive,

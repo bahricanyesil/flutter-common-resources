@@ -15,6 +15,7 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
     this.initialSelection,
     this.iconPadding,
     this.buttonPadding,
+    this.buttonBgColor,
     super.key,
   });
 
@@ -32,6 +33,9 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
 
   /// The padding of the button.
   final EdgeInsets? buttonPadding;
+
+  /// The background color of the button.
+  final Color? buttonBgColor;
 
   @override
   BaseState<CustomPopupMenu<T>> createState() => _CustomPopupMenuState<T>();
@@ -84,7 +88,7 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
   Widget _buildButton(BorderRadius borderRadius) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: DefaultAppColors.selectedColor,
+        color: widget.buttonBgColor ?? DefaultAppColors.selectedColor,
         borderRadius: borderRadius,
       ),
       child: Padding(

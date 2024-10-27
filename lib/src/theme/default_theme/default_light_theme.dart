@@ -14,8 +14,10 @@ class DefaultLightTheme implements BaseTheme {
   final Color? seedColor;
 
   @override
-  ThemeData get themeData =>
-      DefaultThemeHelper.defaultThemeData(isDark: false).copyWith(
+  ThemeData get themeData => DefaultThemeHelper.defaultThemeData(
+        primaryColor: seedColor,
+        isDark: false,
+      ).copyWith(
         textTheme: DefaultThemeHelper.defaultTextTheme(isDark: false),
       );
 

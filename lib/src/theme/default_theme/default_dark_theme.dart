@@ -14,7 +14,8 @@ class DefaultDarkTheme implements BaseTheme {
   final Color? seedColor;
 
   @override
-  ThemeData get themeData => DefaultThemeHelper.defaultThemeData();
+  ThemeData get themeData =>
+      DefaultThemeHelper.defaultThemeData(primaryColor: seedColor);
 
   @override
   ColorScheme get colorScheme => seedColor != null

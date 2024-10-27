@@ -20,7 +20,7 @@ base class BaseButton extends BaseStatefulWidget {
     required this.onPressed,
     this.color,
     this.textColor,
-    this.borderRadius,
+    this.borderRadius = 20,
     this.padding,
     this.animationDuration = const Duration(milliseconds: 400),
     this.isActive,
@@ -46,7 +46,7 @@ base class BaseButton extends BaseStatefulWidget {
   final Color? textColor;
 
   /// The border radius of the button.
-  final double? borderRadius;
+  final double borderRadius;
 
   /// The padding inside the button.
   final EdgeInsets? padding;
@@ -114,7 +114,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+      borderRadius: BorderRadius.circular(widget.borderRadius),
       color: widget.color,
       child: InkWell(
         onTap: _onTap,
@@ -124,7 +124,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
             _isHovered = isHovering;
           });
         },
-        borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+        borderRadius: BorderRadius.circular(widget.borderRadius),
         focusColor: widget.focusColor,
         splashColor: widget.splashColor,
         hoverColor: widget.hoverColor,

@@ -13,4 +13,7 @@ abstract final class Regexes {
   /// Regular expression pattern for parsing browser stack traces.
   static final RegExp browserStackTraceRegex =
       RegExp(r'^(?:package:)?(dart:\S+|\S+)');
+
+  /// Regular expression pattern for parsing email addresses.
+  static final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 }

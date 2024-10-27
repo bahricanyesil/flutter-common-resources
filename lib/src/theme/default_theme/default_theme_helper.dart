@@ -187,9 +187,17 @@ abstract final class DefaultThemeHelper {
       prefixIconColor: colorScheme?.primary ?? DefaultAppColors.primary,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color:
+              isDark ? DefaultAppColors.whiteText : DefaultAppColors.blackText,
+        ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color:
+              isDark ? DefaultAppColors.whiteText : DefaultAppColors.blackText,
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),

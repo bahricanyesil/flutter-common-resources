@@ -19,6 +19,7 @@ base class PasswordField extends BaseStatefulWidget {
     this.validator,
     this.labelText,
     this.inputDecoration,
+    this.suffixIconColor,
     super.key,
   });
 
@@ -42,6 +43,9 @@ base class PasswordField extends BaseStatefulWidget {
 
   /// Custom input decoration.
   final InputDecoration? inputDecoration;
+
+  /// The color of the suffix icon.
+  final Color? suffixIconColor;
 
   @override
   BaseState<PasswordField> createState() => _PasswordFieldState();
@@ -79,7 +83,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
       icon: BaseIcon(
         context,
         _isObscure ? Icons.visibility : Icons.visibility_off,
-        color: DefaultAppColors.primary,
+        color: widget.suffixIconColor ?? DefaultAppColors.primary,
       ),
       padding: const EdgeInsets.all(10),
     );

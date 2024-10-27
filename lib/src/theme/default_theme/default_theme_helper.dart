@@ -25,7 +25,8 @@ abstract final class DefaultThemeHelper {
       colorScheme: colorScheme,
       textTheme: defaultTextTheme(isDark: isDark),
       dropdownMenuTheme: defaultDropdownMenuThemeData(isDark: isDark),
-      inputDecorationTheme: defaultInputDecorationTheme(isDark: isDark),
+      inputDecorationTheme:
+          defaultInputDecorationTheme(colorScheme, isDark: isDark),
       appBarTheme: defaultAppBarTheme(
         isDark: isDark,
         backgroundColor: appBarBackgroundColor,
@@ -168,7 +169,8 @@ abstract final class DefaultThemeHelper {
           : DefaultAppColors.selectedColor.withOpacity(.6);
 
   /// Default input decoration theme for the app.
-  static InputDecorationTheme defaultInputDecorationTheme({
+  static InputDecorationTheme defaultInputDecorationTheme(
+    ColorScheme? colorScheme, {
     bool isDark = true,
   }) {
     final TextStyle? hintStyle = defaultTextTheme()
@@ -181,8 +183,8 @@ abstract final class DefaultThemeHelper {
       isDense: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       constraints: const BoxConstraints(maxWidth: 300),
-      suffixIconColor: DefaultAppColors.primary,
-      prefixIconColor: DefaultAppColors.primary,
+      suffixIconColor: colorScheme?.primary ?? DefaultAppColors.primary,
+      prefixIconColor: colorScheme?.primary ?? DefaultAppColors.primary,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -191,23 +193,26 @@ abstract final class DefaultThemeHelper {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: DefaultAppColors.primary),
+        borderSide:
+            BorderSide(color: colorScheme?.primary ?? DefaultAppColors.primary),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: DefaultAppColors.error),
+        borderSide:
+            BorderSide(color: colorScheme?.error ?? DefaultAppColors.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: DefaultAppColors.error),
+        borderSide:
+            BorderSide(color: colorScheme?.error ?? DefaultAppColors.error),
       ),
       errorStyle: defaultTextTheme()
           .labelMedium
-          ?.copyWith(color: DefaultAppColors.error),
+          ?.copyWith(color: colorScheme?.error ?? DefaultAppColors.error),
       errorMaxLines: 2,
       floatingLabelStyle: defaultTextTheme()
           .labelMedium
-          ?.copyWith(color: DefaultAppColors.primary),
+          ?.copyWith(color: colorScheme?.primary ?? DefaultAppColors.primary),
     );
   }
 
@@ -230,9 +235,12 @@ abstract final class DefaultThemeHelper {
       );
 
   /// Default button theme for the app.
-  static ButtonThemeData defaultButtonTheme({bool isDark = true}) =>
-      const ButtonThemeData(
-        buttonColor: DefaultAppColors.primary,
+  static ButtonThemeData defaultButtonTheme({
+    ColorScheme? colorScheme,
+    bool isDark = true,
+  }) =>
+      ButtonThemeData(
+        buttonColor: colorScheme?.primary ?? DefaultAppColors.primary,
         textTheme: ButtonTextTheme.primary,
       );
 

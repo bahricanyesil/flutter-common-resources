@@ -41,7 +41,7 @@ import 'package:flutter/material.dart';
 ///
 /// This widget is useful in forms or long scrollable content where
 /// input fields can be obscured by the keyboard when they are focused.
-class KeyboardAwareScrollable extends StatefulWidget {
+base class KeyboardAwareScrollable extends StatefulWidget {
   /// Creates a [KeyboardAwareScrollable] widget.
   ///
   /// The [child] parameter is required and defines the content inside the

@@ -56,12 +56,18 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
   }
 
   @override
+  void didUpdateWidget(CustomPopupMenu<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _selectedItem = widget.initialSelection ?? widget.items.first;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final BorderRadius borderRadius = BorderRadius.circular(6);
     return PopupMenuButton<T>(
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       onSelected: _handleSelection,
-      initialValue: widget.initialSelection,
+      initialValue: _selectedItem,
       itemBuilder: _buildMenuItems,
       color: widget.menuBgColor,
       constraints: const BoxConstraints(),

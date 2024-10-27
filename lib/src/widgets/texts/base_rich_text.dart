@@ -6,7 +6,7 @@ import 'models/replace_text.dart';
 
 /// Base rich text widget that can be used for clickable texts.
 @immutable
-final class BaseRichText extends RichText {
+base class BaseRichText extends RichText {
   /// Creates a new instance of the [BaseRichText].
   BaseRichText(
     String text, {

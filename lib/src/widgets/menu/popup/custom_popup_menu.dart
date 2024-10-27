@@ -12,6 +12,7 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
   const CustomPopupMenu({
     required this.items,
     required this.onSelected,
+    this.menuBgColor,
     this.initialSelection,
     this.iconPadding,
     this.buttonPadding,
@@ -37,6 +38,9 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
   /// The background color of the button.
   final Color? buttonBgColor;
 
+  /// The background color of the menu.
+  final Color? menuBgColor;
+
   @override
   BaseState<CustomPopupMenu<T>> createState() => _CustomPopupMenuState<T>();
 }
@@ -59,6 +63,7 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
       onSelected: _handleSelection,
       initialValue: widget.initialSelection,
       itemBuilder: _buildMenuItems,
+      color: widget.menuBgColor,
       constraints: const BoxConstraints(),
       menuPadding: const EdgeInsets.symmetric(vertical: 4),
       child: _buildButton(borderRadius),

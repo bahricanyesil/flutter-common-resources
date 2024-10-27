@@ -39,6 +39,10 @@ abstract final class DefaultThemeHelper {
           (isDark
               ? DefaultAppColors.darkScaffold
               : DefaultAppColors.lightScaffold),
+      popupMenuTheme: PopupMenuThemeData(
+        color: colorScheme.surface,
+        textStyle: defaultTextTheme(isDark: isDark).bodyMedium,
+      ),
     );
   }
 

@@ -35,7 +35,7 @@ abstract final class CustomInputDecorations {
         prefixIcon: prefixWidget ??
             Padding(
               padding:
-                  EdgeInsets.only(left: context.w(14), right: context.w(8)),
+                  EdgeInsets.only(left: context.w(4), right: context.w(1.5)),
               child: BaseIcon(context, prefixIcon, color: AppColors.primary),
             ),
         constraints:

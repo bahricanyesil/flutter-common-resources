@@ -38,6 +38,9 @@ dependencies:
   # Splash
   flutter_native_splash: ^2.4.1
 
+  # Images
+  flutter_svg: ^2.0.10+1
+
 dev_dependencies:
   # Lint
   lint_rules:

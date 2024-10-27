@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'enums/size_device_type.dart';
@@ -73,7 +75,14 @@ class ResponsiveProvider extends ChangeNotifier {
   double getHeight(double inputHeight) => inputHeight * _heightScale;
 
   /// Calculates the font size based on the width.
-  double getFontSize(double inputFontSize) => inputFontSize * _widthScale;
+  double getFontSize(double inputFontSize) {
+    final double scaledFontW = _widthScale * 9;
+    final double scaledFontH = _heightScale * 16;
+    final bool isFontWidth = scaledFontW < scaledFontH;
+    final double fS = inputFontSize *
+        (min(scaledFontW, scaledFontH) / (isFontWidth ? 9 : 16));
+    return fS;
+  }
 
   /// Device type checks
   /// Returns true if the device is a mobile device.

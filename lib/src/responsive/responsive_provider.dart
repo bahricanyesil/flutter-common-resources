@@ -48,7 +48,8 @@ class ResponsiveProvider extends ChangeNotifier {
       _mediaQuery = mediaQuery;
       _widthScale = _mediaQuery!.size.width / baseWidth;
       _heightScale = _mediaQuery!.size.height / baseHeight;
-      _deviceType = _calculateDeviceType();
+      final SizeDeviceType newDeviceType = _calculateDeviceType();
+      if (_deviceType != newDeviceType) _deviceType = newDeviceType;
       notifyListeners();
     }
   }
@@ -96,7 +97,7 @@ class ResponsiveProvider extends ChangeNotifier {
   bool get isLandscape => screenWidth > screenHeight;
 
   /// Gets the device type.
-  SizeDeviceType getDeviceType() => _deviceType;
+  SizeDeviceType get deviceType => _deviceType;
 
   SizeDeviceType _calculateDeviceType() {
     if (isDesktop) return SizeDeviceType.desktop;

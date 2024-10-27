@@ -6,6 +6,12 @@ import 'responsive_provider.dart';
 
 /// Extensions to provide responsive design values.
 extension ResponsivenessExtensions on BuildContext {
+  /// Gets the screen width.
+  double get screenW => select((ResponsiveProvider p) => p.screenWidth);
+
+  /// Gets the screen height.
+  double get screenH => select((ResponsiveProvider p) => p.screenHeight);
+
   /// Gets factored responsiveness width.
   double w(double widthFactor) =>
       select((ResponsiveProvider p) => p.getWidth(widthFactor));
@@ -18,9 +24,12 @@ extension ResponsivenessExtensions on BuildContext {
   double fs(double fontSize) =>
       select((ResponsiveProvider p) => p.getFontSize(fontSize));
 
+  /// Gets whether the device is in portrait or landscape mode.
+  bool get isPortrait => select((ResponsiveProvider p) => p.isPortrait);
+
   /// Gets the device type.
   SizeDeviceType get sizeDeviceType =>
-      select((ResponsiveProvider p) => p.getDeviceType());
+      select((ResponsiveProvider p) => p.deviceType);
 
   /// Builds a widget based on the size device type.
   Widget responsiveBuilder(

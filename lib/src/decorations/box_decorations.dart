@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_common_resources/src/responsive/responsiveness_extensions.dart';
 
 import '../theme/app_colors.dart';
 
@@ -25,7 +24,7 @@ abstract final class BoxDecorations {
         color: isActive
             ? (isPressed ? color.withOpacity(0.8) : color)
             : (inactiveColor ?? AppColors.inactive),
-        borderRadius: BorderRadius.circular(borderRadius ?? context.fs(8)),
+        borderRadius: BorderRadius.circular(borderRadius ?? 8),
         boxShadow:
             isPressed && isActive ? <BoxShadow>[] : <BoxShadow>[pressShadow],
       );

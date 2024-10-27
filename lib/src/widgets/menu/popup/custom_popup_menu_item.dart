@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import '../../../models/image_source.dart';
 
 /// A custom dropdown item with a label, value, and enabled status.
-base class CustomPopupMenuItem {
+base class CustomPopupMenuItem extends Equatable {
   /// Creates a custom dropdown item with a label, value, and enabled status.
   const CustomPopupMenuItem({
     required this.label,
@@ -20,4 +22,7 @@ base class CustomPopupMenuItem {
 
   @override
   String toString() => label;
+
+  @override
+  List<Object?> get props => <Object?>[label];
 }

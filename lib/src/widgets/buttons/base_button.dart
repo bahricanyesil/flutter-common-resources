@@ -11,10 +11,11 @@ import '../../theme/app_colors.dart';
 import '../texts/base_text.dart';
 
 /// Box decoration builder depending on the state of the button.
-typedef ButtonDecorationBuilder = BoxDecoration Function({
-  required bool isActive,
-  required bool isPressed,
-});
+typedef ButtonDecorationBuilder = BoxDecoration Function(
+  // ignore: avoid_positional_boolean_parameters
+  bool isActive,
+  bool isPressed,
+);
 
 /// A customizable action button with animation, loading state, and active/inactive states.
 base class BaseButton extends BaseStatefulWidget {
@@ -153,8 +154,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
           padding: _buttonPadding,
           width: _buttonWidth(context),
           height: _buttonHeight,
-          decoration: widget.boxDecorationBuilder
-              ?.call(isActive: _isActive, isPressed: _isPressed),
+          decoration: widget.boxDecorationBuilder?.call(_isActive, _isPressed),
           child: _stateSwitcher(),
         ),
       ),

@@ -10,13 +10,6 @@ import '../../state/state.dart';
 import '../../theme/app_colors.dart';
 import '../texts/base_text.dart';
 
-/// Box decoration builder depending on the state of the button.
-typedef ButtonDecorationBuilder = BoxDecoration Function(
-  // ignore: avoid_positional_boolean_parameters
-  bool isActive,
-  bool isPressed,
-);
-
 /// A customizable action button with animation, loading state, and active/inactive states.
 base class BaseButton extends BaseStatefulWidget {
   /// Creates a [BaseButton].
@@ -34,9 +27,9 @@ base class BaseButton extends BaseStatefulWidget {
     this.width,
     this.height,
     this.loadingWidth,
-    this.boxDecorationBuilder,
     this.splashColor,
     this.hoverColor,
+    this.focusColor,
     super.key,
   });
 
@@ -73,21 +66,20 @@ base class BaseButton extends BaseStatefulWidget {
   /// The width of the button during loading state.
   final double? loadingWidth;
 
-  /// The builder for the box decoration of the button.
-  final ButtonDecorationBuilder? boxDecorationBuilder;
-
   /// Splash color of the button.
   final Color? splashColor;
 
   /// Hover color of the button.
   final Color? hoverColor;
 
+  /// Focus color of the button.
+  final Color? focusColor;
+
   @override
   _BaseButtonState createState() => _BaseButtonState();
 }
 
 class _BaseButtonState extends BaseState<BaseButton> {
-  bool _isPressed = false;
   bool _isLoading = false;
   bool _isHovered = false;
   late bool _isActive;
@@ -109,16 +101,9 @@ class _BaseButtonState extends BaseState<BaseButton> {
     }
   }
 
-  void _onTapDown(TapDownDetails details) {
-    if (_isActive && !_isLoading) {
-      safeSetState(() => _isPressed = true);
-    }
-  }
-
-  Future<void> _onTapUp(TapUpDetails details) async {
+  Future<void> _onTap() async {
     if (_isActive && !_isLoading) {
       safeSetState(() {
-        _isPressed = false;
         _isLoading = true;
       });
       await widget.onPressed?.call();
@@ -126,26 +111,21 @@ class _BaseButtonState extends BaseState<BaseButton> {
     }
   }
 
-  void _onTapCancel() {
-    if (_isActive && !_isLoading) {
-      safeSetState(() => _isPressed = false);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent, // Ensure the material is transparent
+      borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+      color: widget.color,
       child: InkWell(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
+        onTap: _onTap,
         onHover: (bool isHovering) {
           if (_isHovered == isHovering) return;
           setState(() {
             _isHovered = isHovering;
           });
         },
+        borderRadius: BorderRadius.circular(widget.borderRadius ?? 0),
+        focusColor: widget.focusColor,
         splashColor: widget.splashColor,
         hoverColor: widget.hoverColor,
         child: AnimatedContainer(
@@ -154,7 +134,6 @@ class _BaseButtonState extends BaseState<BaseButton> {
           padding: _buttonPadding,
           width: _buttonWidth(context),
           height: _buttonHeight,
-          decoration: widget.boxDecorationBuilder?.call(_isActive, _isPressed),
           child: _stateSwitcher(),
         ),
       ),

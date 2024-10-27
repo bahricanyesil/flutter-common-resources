@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_common_resources/src/extensions/input_decoration_extensions.dart';
+import 'package:flutter_common_resources/common_resources.dart';
 
-import '../../decorations/custom_input_decorations.dart';
-import '../../state/state.dart';
-import 'base_field_mixin.dart';
-
-/// Phone field that allows users to enter their phone number.
-base class PhoneField extends BaseStatefulWidget {
-  /// Creates a PhoneField.
-  const PhoneField({
+/// Email field that allows users to enter their email.
+base class EmailField extends BaseStatefulWidget {
+  /// Creates a EmailField.
+  const EmailField({
     this.focusNode,
     this.fieldKey,
     this.controller,
@@ -20,33 +15,33 @@ base class PhoneField extends BaseStatefulWidget {
     super.key,
   });
 
-  /// Focus node for the phone field.
+  /// Focus node for the email field.
   final FocusNode? focusNode;
 
-  /// Key for the phone field.
+  /// Key for the email field.
   final GlobalKey<FormFieldState<String>>? fieldKey;
 
-  /// Controller for the phone field.
+  /// Controller for the email field.
   final TextEditingController? controller;
 
-  /// Value change callback for the phone field.
+  /// Value change callback for the email field.
   final ValueChangeCallback? valueChangeCallback;
 
-  /// Validator for the name field.
+  /// Validator for the email field.
   final FormFieldValidator<String>? validator;
 
-  /// Label text for the name field.
+  /// Label text for the email field.
   final String? labelText;
 
   /// Custom input decoration.
   final InputDecoration? inputDecoration;
 
   @override
-  BaseState<PhoneField> createState() => _PhoneFieldState();
+  BaseState<EmailField> createState() => _EmailFieldState();
 }
 
-class _PhoneFieldState extends BaseState<PhoneField>
-    with BaseFieldMixin<PhoneField> {
+class _EmailFieldState extends BaseState<EmailField>
+    with BaseFieldMixin<EmailField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -56,13 +51,10 @@ class _PhoneFieldState extends BaseState<PhoneField>
       decoration: CustomInputDecorations.defaultInputDeco(
         context,
         labelText: widget.labelText,
-        prefixIcon: Icons.phone,
+        prefixIcon: Icons.email,
       ).mergeWith(widget.inputDecoration),
-      keyboardType: TextInputType.phone,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly,
-      ],
-      autofillHints: const <String>[AutofillHints.telephoneNumber],
+      keyboardType: TextInputType.emailAddress,
+      autofillHints: const <String>[AutofillHints.email],
       autocorrect: false,
       validator: widget.validator,
     );

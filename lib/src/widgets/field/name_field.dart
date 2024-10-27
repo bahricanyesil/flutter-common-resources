@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_common_resources/src/extensions/input_decoration_extensions.dart';
 
 import '../../../common_resources.dart';
 
@@ -17,16 +16,16 @@ base class NameField extends BaseStatefulWidget {
     super.key,
   });
 
-  /// Focus node for the phone field.
+  /// Focus node for the name field.
   final FocusNode? focusNode;
 
-  /// Key for the phone field.
+  /// Key for the name field.
   final GlobalKey<FormFieldState<String>>? fieldKey;
 
-  /// Controller for the phone field.
+  /// Controller for the name field.
   final TextEditingController? controller;
 
-  /// Value change callback for the password field.
+  /// Value change callback for the name field.
   final ValueChangeCallback? valueChangeCallback;
 
   /// Validator for the name field.

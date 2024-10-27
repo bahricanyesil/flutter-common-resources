@@ -32,6 +32,12 @@ dependencies:
       url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
       path: packages/theme_manager
 
+  # Language
+  language_manager:
+    git:
+      url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
+      path: packages/language_manager
+
   # Splash
   flutter_native_splash: ^2.4.1
 

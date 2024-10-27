@@ -160,7 +160,6 @@ class _BaseButtonState extends BaseState<BaseButton> {
   BaseText _buttonText() {
     return BaseText(
       widget.text,
-      key: const ValueKey<String>('text'),
       style: context.bodyMedium
           ?.copyWith(color: widget.textColor ?? AppColors.whiteText),
     );
@@ -168,7 +167,6 @@ class _BaseButtonState extends BaseState<BaseButton> {
 
   Widget _loadingIndicator() {
     return SpinKitSpinningLines(
-      key: const ValueKey<String>('loading'),
       color: Colors.white,
       size: _indicatorWidth,
     );

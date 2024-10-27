@@ -48,8 +48,8 @@ class ResponsiveProvider extends ChangeNotifier {
         widthDiff.abs() > _updateThreshold ||
         heightDiff.abs() > _updateThreshold) {
       _mediaQuery = mediaQuery;
-      _widthScale = _mediaQuery!.size.width / baseWidth;
-      _heightScale = _mediaQuery!.size.height / baseHeight;
+      _widthScale = _mediaQuery!.size.width / 100;
+      _heightScale = _mediaQuery!.size.height / 100;
       final SizeDeviceType newDeviceType = _calculateDeviceType();
       if (_deviceType != newDeviceType) _deviceType = newDeviceType;
       notifyListeners();

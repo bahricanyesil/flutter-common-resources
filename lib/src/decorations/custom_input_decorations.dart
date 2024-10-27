@@ -15,9 +15,11 @@ abstract final class CustomInputDecorations {
     Widget? suffixIcon,
     String? labelText,
     IconData? prefixIcon,
+    Widget? prefixWidget,
     InputBorder? border,
     EdgeInsets? padding,
     TextStyle? hintStyle,
+    BoxConstraints? boxConstraints,
   }) =>
       InputDecoration(
         hintText: hintText,
@@ -30,10 +32,13 @@ abstract final class CustomInputDecorations {
         prefixIconConstraints: const BoxConstraints(),
         border: border,
         contentPadding: padding,
-        prefixIcon: Padding(
-          padding: EdgeInsets.only(left: context.w(14), right: context.w(8)),
-          child: BaseIcon(context, prefixIcon, color: AppColors.primary),
-        ),
-        constraints: BoxConstraints(maxWidth: context.deviceW(80)),
+        prefixIcon: prefixWidget ??
+            Padding(
+              padding:
+                  EdgeInsets.only(left: context.w(14), right: context.w(8)),
+              child: BaseIcon(context, prefixIcon, color: AppColors.primary),
+            ),
+        constraints:
+            boxConstraints ?? BoxConstraints(maxWidth: context.deviceW(80)),
       );
 }

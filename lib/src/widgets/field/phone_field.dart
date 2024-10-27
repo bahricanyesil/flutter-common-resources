@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_common_resources/src/extensions/input_decoration_extensions.dart';
 
 import '../../decorations/custom_input_decorations.dart';
 import '../../state/state.dart';
@@ -56,7 +57,7 @@ class _PhoneFieldState extends BaseState<PhoneField>
         context,
         labelText: widget.labelText,
         prefixIcon: Icons.phone,
-      ),
+      ).mergeWith(widget.inputDecoration),
       keyboardType: TextInputType.phone,
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly,

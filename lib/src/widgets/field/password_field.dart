@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common_resources/src/extensions/input_decoration_extensions.dart';
 
 import '../../decorations/custom_input_decorations.dart';
 import '../../state/state.dart';
@@ -60,7 +61,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
           labelText: widget.labelText,
           suffixIcon: _obscureSuffixButton(context),
           prefixIcon: Icons.lock,
-        ),
+        ).mergeWith(widget.inputDecoration),
         obscureText: _isObscure,
         keyboardType: TextInputType.visiblePassword,
         autofillHints: const <String>[

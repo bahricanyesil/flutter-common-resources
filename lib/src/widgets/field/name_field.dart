@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_common_resources/src/extensions/input_decoration_extensions.dart';
 
 import '../../../common_resources.dart';
 
@@ -53,7 +54,7 @@ class _NameFieldState extends BaseState<NameField>
         context,
         labelText: widget.labelText,
         prefixIcon: Icons.person_outline,
-      ),
+      ).mergeWith(widget.inputDecoration),
       keyboardType: TextInputType.name,
       autofillHints: const <String>[AutofillHints.name],
       autocorrect: false,

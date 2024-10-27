@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'enums/device_type.dart';
+import 'enums/size_device_type.dart';
 
 /// A provider class to manage responsive design values.
 class ResponsiveProvider extends ChangeNotifier {
@@ -31,7 +31,7 @@ class ResponsiveProvider extends ChangeNotifier {
   MediaQueryData? _mediaQuery;
   double _widthScale = 1;
   double _heightScale = 1;
-  DeviceType _deviceType = DeviceType.unknown;
+  SizeDeviceType _deviceType = SizeDeviceType.unknown;
 
   /// Initialize media query and scaling values
   void update(BuildContext context) {
@@ -96,23 +96,23 @@ class ResponsiveProvider extends ChangeNotifier {
   bool get isLandscape => screenWidth > screenHeight;
 
   /// Gets the device type.
-  DeviceType getDeviceType() => _deviceType;
+  SizeDeviceType getDeviceType() => _deviceType;
 
-  DeviceType _calculateDeviceType() {
-    if (isDesktop) return DeviceType.desktop;
-    if (isTablet) return DeviceType.tablet;
-    if (isMobile) return DeviceType.mobile;
-    return DeviceType.unknown;
+  SizeDeviceType _calculateDeviceType() {
+    if (isDesktop) return SizeDeviceType.desktop;
+    if (isTablet) return SizeDeviceType.tablet;
+    if (isMobile) return SizeDeviceType.mobile;
+    return SizeDeviceType.unknown;
   }
 
   double _getScaleForDeviceType() {
     switch (_deviceType) {
-      case DeviceType.desktop:
+      case SizeDeviceType.desktop:
         return _desktopScale;
-      case DeviceType.tablet:
+      case SizeDeviceType.tablet:
         return _tabletScale;
-      case DeviceType.mobile:
-      case DeviceType.unknown:
+      case SizeDeviceType.mobile:
+      case SizeDeviceType.unknown:
         return _defaultScale;
     }
   }

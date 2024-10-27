@@ -1,5 +1,5 @@
 /// Enum to represent different device types
-enum DeviceType {
+enum SizeDeviceType {
   /// Mobile device size type
   mobile,
 

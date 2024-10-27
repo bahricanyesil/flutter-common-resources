@@ -42,7 +42,7 @@ abstract final class AppColors {
   static const Color selectedColor = Color(0xffefefef);
 
   /// The inactive color.
-  static const Color inactive = Color.fromARGB(255, 145, 145, 145);
+  static const Color inactive = Color.fromARGB(255, 122, 122, 122);
 
   /// The black text color.
   static const Color blackText = Color(0xff111111);

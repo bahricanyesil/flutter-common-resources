@@ -12,13 +12,14 @@ class CustomAppBar extends AppBar {
     Widget? centerWidget,
     Widget? trailingWidget,
     double horizontalMarginFactor = 4,
+    double verticalMarginFactor = 1,
     double spacingFactor = 4,
     super.key,
   }) : super(
           elevation: 0,
           backgroundColor: context.themeD.scaffoldBackgroundColor,
           automaticallyImplyLeading: false,
-          toolbarHeight: kToolbarHeight + context.deviceH(1),
+          toolbarHeight: kToolbarHeight + context.deviceH(verticalMarginFactor),
           actions: <Widget>[
             context.hBox(horizontalMarginFactor),
             Expanded(

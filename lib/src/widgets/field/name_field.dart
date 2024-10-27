@@ -4,7 +4,7 @@ import 'package:flutter_common_resources/src/extensions/input_decoration_extensi
 import '../../../common_resources.dart';
 
 /// Name field that allows users to enter their name.
-final class NameField extends BaseStatefulWidget {
+base class NameField extends BaseStatefulWidget {
   /// Creates a NameField.
   const NameField({
     this.focusNode,

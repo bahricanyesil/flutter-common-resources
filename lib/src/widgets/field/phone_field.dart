@@ -7,7 +7,7 @@ import '../../state/state.dart';
 import 'base_field_mixin.dart';
 
 /// Phone field that allows users to enter their phone number.
-final class PhoneField extends BaseStatefulWidget {
+base class PhoneField extends BaseStatefulWidget {
   /// Creates a PhoneField.
   const PhoneField({
     this.focusNode,

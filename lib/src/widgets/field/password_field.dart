@@ -9,7 +9,7 @@ import '../icons/icons.dart';
 import 'base_field_mixin.dart';
 
 /// Password field that allows users to enter their password.
-final class PasswordField extends BaseStatefulWidget {
+base class PasswordField extends BaseStatefulWidget {
   /// Creates a PasswordField.
   const PasswordField({
     this.focusNode,

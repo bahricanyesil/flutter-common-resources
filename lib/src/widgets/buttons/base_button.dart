@@ -34,6 +34,8 @@ base class BaseButton extends BaseStatefulWidget {
     this.height,
     this.loadingWidth,
     this.boxDecorationBuilder,
+    this.splashColor,
+    this.hoverColor,
     super.key,
   });
 
@@ -73,6 +75,12 @@ base class BaseButton extends BaseStatefulWidget {
   /// The builder for the box decoration of the button.
   final ButtonDecorationBuilder? boxDecorationBuilder;
 
+  /// Splash color of the button.
+  final Color? splashColor;
+
+  /// Hover color of the button.
+  final Color? hoverColor;
+
   @override
   _BaseButtonState createState() => _BaseButtonState();
 }
@@ -80,6 +88,7 @@ base class BaseButton extends BaseStatefulWidget {
 class _BaseButtonState extends BaseState<BaseButton> {
   bool _isPressed = false;
   bool _isLoading = false;
+  bool _isHovered = false;
   late bool _isActive;
 
   @override
@@ -124,19 +133,30 @@ class _BaseButtonState extends BaseState<BaseButton> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
-      onTapCancel: _onTapCancel,
-      child: AnimatedContainer(
-        duration: widget.animationDuration,
-        curve: Curves.easeInOut,
-        padding: _buttonPadding,
-        width: _buttonWidth(context),
-        height: _buttonHeight,
-        decoration: widget.boxDecorationBuilder
-            ?.call(isActive: _isActive, isPressed: _isPressed),
-        child: _stateSwitcher(),
+    return Material(
+      color: Colors.transparent, // Ensure the material is transparent
+      child: InkWell(
+        onTapDown: _onTapDown,
+        onTapUp: _onTapUp,
+        onTapCancel: _onTapCancel,
+        onHover: (bool isHovering) {
+          if (_isHovered == isHovering) return;
+          setState(() {
+            _isHovered = isHovering;
+          });
+        },
+        splashColor: widget.splashColor,
+        hoverColor: widget.hoverColor,
+        child: AnimatedContainer(
+          duration: widget.animationDuration,
+          curve: Curves.easeInOut,
+          padding: _buttonPadding,
+          width: _buttonWidth(context),
+          height: _buttonHeight,
+          decoration: widget.boxDecorationBuilder
+              ?.call(isActive: _isActive, isPressed: _isPressed),
+          child: _stateSwitcher(),
+        ),
       ),
     );
   }

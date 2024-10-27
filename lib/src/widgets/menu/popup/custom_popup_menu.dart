@@ -84,7 +84,7 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
   Widget _buildButton(BorderRadius borderRadius) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: AppColors.selectedColor,
+        color: DefaultAppColors.selectedColor,
         borderRadius: borderRadius,
       ),
       child: Padding(

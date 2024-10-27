@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
+import '../theme/default_app_colors.dart';
 
 /// Box decorations for the app.
 abstract final class BoxDecorations {
@@ -22,7 +22,7 @@ abstract final class BoxDecorations {
       BoxDecoration(
         color: isActive
             ? (isPressed ? color.withOpacity(0.8) : color)
-            : (inactiveColor ?? AppColors.inactive),
+            : (inactiveColor ?? DefaultAppColors.inactive),
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         boxShadow:
             isPressed && isActive ? <BoxShadow>[] : <BoxShadow>[pressShadow],

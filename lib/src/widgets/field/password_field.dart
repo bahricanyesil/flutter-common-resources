@@ -3,7 +3,7 @@ import 'package:flutter_common_resources/src/extensions/input_decoration_extensi
 
 import '../../decorations/custom_input_decorations.dart';
 import '../../state/state.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/default_app_colors.dart';
 import '../buttons/buttons.dart';
 import '../icons/icons.dart';
 import 'base_field_mixin.dart';
@@ -79,7 +79,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
       icon: BaseIcon(
         context,
         _isObscure ? Icons.visibility : Icons.visibility_off,
-        color: AppColors.primary,
+        color: DefaultAppColors.primary,
       ),
       padding: const EdgeInsets.all(10),
     );

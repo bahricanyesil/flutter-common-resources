@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 /// The app colors.
-abstract final class AppColors {
+abstract final class DefaultAppColors {
   /// The primary color.
   static const Color primary = Color(0xff6200ea);
 

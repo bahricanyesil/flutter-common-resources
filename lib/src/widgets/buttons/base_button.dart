@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../constants/constants.dart';
 import '../../state/state.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/default_app_colors.dart';
 import '../texts/base_text.dart';
 
 /// A customizable action button with animation, loading state, and active/inactive states.
@@ -160,7 +160,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
     return BaseText(
       widget.text,
       style: context.bodyMedium
-          ?.copyWith(color: widget.textColor ?? AppColors.whiteText),
+          ?.copyWith(color: widget.textColor ?? DefaultAppColors.whiteText),
     );
   }
 

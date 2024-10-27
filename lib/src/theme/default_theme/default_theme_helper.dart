@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app_colors.dart';
+import '../default_app_colors.dart';
 
 /// Default theme helper for the app.
 abstract final class DefaultThemeHelper {
@@ -35,7 +35,9 @@ abstract final class DefaultThemeHelper {
       iconTheme: defaultIconTheme(isDark: isDark, color: iconColor),
       cardTheme: defaultCardTheme(isDark: isDark, color: cardColor),
       scaffoldBackgroundColor: scaffoldBackgroundColor ??
-          (isDark ? AppColors.darkScaffold : AppColors.lightScaffold),
+          (isDark
+              ? DefaultAppColors.darkScaffold
+              : DefaultAppColors.lightScaffold),
     );
   }
 
@@ -45,8 +47,10 @@ abstract final class DefaultThemeHelper {
     Color? primaryColor,
   }) =>
       isDark
-          ? ColorScheme.dark(primary: primaryColor ?? AppColors.primary)
-          : ColorScheme.light(primary: primaryColor ?? AppColors.primary);
+          ? ColorScheme.dark(primary: primaryColor ?? DefaultAppColors.primary)
+          : ColorScheme.light(
+              primary: primaryColor ?? DefaultAppColors.primary,
+            );
 
   /// Default text theme for the app.
   static TextTheme defaultTextTheme({bool isDark = true}) {
@@ -153,21 +157,23 @@ abstract final class DefaultThemeHelper {
           constraints: BoxConstraints(),
           contentPadding: EdgeInsets.zero,
         ),
-        textStyle:
-            defaultTextTheme().bodyMedium?.copyWith(color: AppColors.blackText),
+        textStyle: defaultTextTheme()
+            .bodyMedium
+            ?.copyWith(color: DefaultAppColors.blackText),
       );
 
   static Color? _bgColorResolver(Set<WidgetState> states) =>
       states.contains(WidgetState.selected)
-          ? AppColors.selectedColor
-          : AppColors.selectedColor.withOpacity(.6);
+          ? DefaultAppColors.selectedColor
+          : DefaultAppColors.selectedColor.withOpacity(.6);
 
   /// Default input decoration theme for the app.
   static InputDecorationTheme defaultInputDecorationTheme({
     bool isDark = true,
   }) {
-    final TextStyle? hintStyle =
-        defaultTextTheme().labelLarge?.copyWith(color: AppColors.blackText);
+    final TextStyle? hintStyle = defaultTextTheme()
+        .labelLarge
+        ?.copyWith(color: DefaultAppColors.blackText);
     return InputDecorationTheme(
       hintStyle: hintStyle,
       helperStyle: hintStyle,
@@ -175,8 +181,8 @@ abstract final class DefaultThemeHelper {
       isDense: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
       constraints: const BoxConstraints(maxWidth: 300),
-      suffixIconColor: AppColors.primary,
-      prefixIconColor: AppColors.primary,
+      suffixIconColor: DefaultAppColors.primary,
+      prefixIconColor: DefaultAppColors.primary,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -185,21 +191,23 @@ abstract final class DefaultThemeHelper {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: AppColors.primary),
+        borderSide: const BorderSide(color: DefaultAppColors.primary),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: AppColors.error),
+        borderSide: const BorderSide(color: DefaultAppColors.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: AppColors.error),
+        borderSide: const BorderSide(color: DefaultAppColors.error),
       ),
-      errorStyle:
-          defaultTextTheme().labelMedium?.copyWith(color: AppColors.error),
+      errorStyle: defaultTextTheme()
+          .labelMedium
+          ?.copyWith(color: DefaultAppColors.error),
       errorMaxLines: 2,
-      floatingLabelStyle:
-          defaultTextTheme().labelMedium?.copyWith(color: AppColors.primary),
+      floatingLabelStyle: defaultTextTheme()
+          .labelMedium
+          ?.copyWith(color: DefaultAppColors.primary),
     );
   }
 
@@ -211,7 +219,9 @@ abstract final class DefaultThemeHelper {
   }) =>
       AppBarTheme(
         backgroundColor: backgroundColor ??
-            (isDark ? AppColors.darkAppBar : AppColors.lightAppBar),
+            (isDark
+                ? DefaultAppColors.darkAppBar
+                : DefaultAppColors.lightAppBar),
         foregroundColor:
             foregroundColor ?? (isDark ? Colors.white : Colors.black),
         elevation: 0,
@@ -222,7 +232,7 @@ abstract final class DefaultThemeHelper {
   /// Default button theme for the app.
   static ButtonThemeData defaultButtonTheme({bool isDark = true}) =>
       const ButtonThemeData(
-        buttonColor: AppColors.primary,
+        buttonColor: DefaultAppColors.primary,
         textTheme: ButtonTextTheme.primary,
       );
 

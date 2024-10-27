@@ -13,6 +13,8 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
     required this.items,
     required this.onSelected,
     this.initialSelection,
+    this.iconPadding,
+    this.buttonPadding,
     super.key,
   });
 
@@ -24,6 +26,12 @@ base class CustomPopupMenu<T extends CustomPopupMenuItem>
 
   /// The callback to call when the popup menu selection changes.
   final OnSelected<T> onSelected;
+
+  /// The padding around the icon.
+  final EdgeInsets? iconPadding;
+
+  /// The padding of the button.
+  final EdgeInsets? buttonPadding;
 
   @override
   BaseState<CustomPopupMenu<T>> createState() => _CustomPopupMenuState<T>();
@@ -66,34 +74,40 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
         .map(
           (T item) => PopupMenuItem<T>(
             value: item,
-            padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: _itemChild(item),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: _itemChild(context, item),
           ),
         )
         .toList();
   }
 
   Widget _buildButton(BorderRadius borderRadius) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: AppColors.selectedColor,
         borderRadius: borderRadius,
       ),
-      child: _itemChild(
-        _selectedItem,
-        customLabel: BaseIcon(context, Icons.arrow_drop_down_outlined),
+      child: Padding(
+        padding: widget.buttonPadding ?? const EdgeInsets.all(8),
+        child: _itemChild(
+          context,
+          _selectedItem,
+          customLabel: BaseIcon(context, Icons.arrow_drop_down_outlined),
+        ),
       ),
     );
   }
 
-  Row _itemChild(T? item, {Widget? customLabel}) {
+  Row _itemChild(BuildContext context, T? item, {Widget? customLabel}) {
     final Widget? image = item?.imageSource?.toImage(width: 26);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         if (image != null)
-          Padding(padding: const EdgeInsets.only(right: 6), child: image),
+          Padding(
+            padding: widget.iconPadding ?? const EdgeInsets.only(right: 7),
+            child: image,
+          ),
         if (customLabel != null || item?.label != null)
           Flexible(child: customLabel ?? Text(item!.label)),
       ],

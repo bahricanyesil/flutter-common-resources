@@ -10,6 +10,7 @@ export 'src/di/di.dart';
 export 'src/exceptions/exceptions.dart';
 export 'src/extensions/extensions.dart';
 export 'src/models/models.dart';
+export 'src/responsive/responsive.dart';
 export 'src/state/state.dart';
 export 'src/styles/styles.dart';
 export 'src/theme/theme.dart';

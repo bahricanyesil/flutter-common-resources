@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../assets/lang/translations.g.dart';
 import '../../decorations/custom_input_decorations.dart';
 import '../../state/state.dart';
-import '../../utils/field_validators.dart';
 import 'base_field_mixin.dart';
 
 /// Phone field that allows users to enter their phone number.
@@ -15,6 +13,8 @@ final class PhoneField extends BaseStatefulWidget {
     this.fieldKey,
     this.controller,
     this.valueChangeCallback,
+    this.validator,
+    this.labelText,
     super.key,
   });
 
@@ -30,6 +30,12 @@ final class PhoneField extends BaseStatefulWidget {
   /// Value change callback for the password field.
   final ValueChangeCallback? valueChangeCallback;
 
+  /// Validator for the name field.
+  final FormFieldValidator<String>? validator;
+
+  /// Label text for the name field.
+  final String? labelText;
+
   @override
   BaseState<PhoneField> createState() => _PhoneFieldState();
 }
@@ -44,7 +50,7 @@ class _PhoneFieldState extends BaseState<PhoneField>
       focusNode: internalFocusNode,
       decoration: CustomInputDecorations.defaultInputDeco(
         context,
-        labelText: context.t.auth.login.phone_number,
+        labelText: widget.labelText,
         prefixIcon: Icons.phone,
       ),
       keyboardType: TextInputType.phone,
@@ -53,7 +59,7 @@ class _PhoneFieldState extends BaseState<PhoneField>
       ],
       autofillHints: const <String>[AutofillHints.telephoneNumber],
       autocorrect: false,
-      validator: FieldValidators.phone,
+      validator: widget.validator,
     );
   }
 

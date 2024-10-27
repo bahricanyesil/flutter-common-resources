@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../common_resources.dart';
-import '../../assets/lang/translations.g.dart';
 
 /// Name field that allows users to enter their name.
 final class NameField extends BaseStatefulWidget {
@@ -11,6 +10,8 @@ final class NameField extends BaseStatefulWidget {
     this.fieldKey,
     this.controller,
     this.valueChangeCallback,
+    this.validator,
+    this.labelText,
     super.key,
   });
 
@@ -26,6 +27,12 @@ final class NameField extends BaseStatefulWidget {
   /// Value change callback for the password field.
   final ValueChangeCallback? valueChangeCallback;
 
+  /// Validator for the name field.
+  final FormFieldValidator<String>? validator;
+
+  /// Label text for the name field.
+  final String? labelText;
+
   @override
   BaseState<NameField> createState() => _NameFieldState();
 }
@@ -40,13 +47,13 @@ class _NameFieldState extends BaseState<NameField>
       focusNode: internalFocusNode,
       decoration: CustomInputDecorations.defaultInputDeco(
         context,
-        labelText: context.t.auth.sign_up.name,
+        labelText: widget.labelText,
         prefixIcon: Icons.person_outline,
       ),
       keyboardType: TextInputType.name,
       autofillHints: const <String>[AutofillHints.name],
       autocorrect: false,
-      validator: FieldValidators.name,
+      validator: widget.validator,
     );
   }
 

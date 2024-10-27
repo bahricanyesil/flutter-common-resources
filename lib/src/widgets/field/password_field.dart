@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../assets/lang/translations.g.dart';
 import '../../decorations/custom_input_decorations.dart';
 import '../../state/state.dart';
 import '../../theme/app_colors.dart';
-import '../../utils/field_validators.dart';
 import '../buttons/buttons.dart';
 import '../icons/icons.dart';
 import 'base_field_mixin.dart';
@@ -17,6 +15,8 @@ final class PasswordField extends BaseStatefulWidget {
     this.fieldKey,
     this.controller,
     this.valueChangeCallback,
+    this.validator,
+    this.labelText,
     super.key,
   });
 
@@ -31,6 +31,12 @@ final class PasswordField extends BaseStatefulWidget {
 
   /// Value change callback for the password field.
   final ValueChangeCallback? valueChangeCallback;
+
+  /// Validator for the name field.
+  final FormFieldValidator<String>? validator;
+
+  /// Label text for the name field.
+  final String? labelText;
 
   @override
   BaseState<PasswordField> createState() => _PasswordFieldState();
@@ -47,7 +53,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
         focusNode: internalFocusNode,
         decoration: CustomInputDecorations.defaultInputDeco(
           context,
-          labelText: context.t.auth.login.password,
+          labelText: widget.labelText,
           suffixIcon: _obscureSuffixButton(context),
           prefixIcon: Icons.lock,
         ),
@@ -59,7 +65,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
         ],
         enableSuggestions: false,
         autocorrect: false,
-        validator: FieldValidators.password,
+        validator: widget.validator,
       );
 
   BaseIconButton _obscureSuffixButton(BuildContext context) {

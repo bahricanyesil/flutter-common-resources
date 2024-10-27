@@ -118,7 +118,7 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
             child: image,
           ),
         if (customLabel != null || item?.label != null)
-          Flexible(child: customLabel ?? Text(item!.label)),
+          customLabel ?? BaseText(item!.label),
       ],
     );
   }

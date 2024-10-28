@@ -30,6 +30,7 @@ base class BaseButton extends BaseStatefulWidget {
     this.splashColor,
     this.hoverColor,
     this.focusColor,
+    this.isLoading = false,
     super.key,
   });
 
@@ -75,12 +76,15 @@ base class BaseButton extends BaseStatefulWidget {
   /// Focus color of the button.
   final Color? focusColor;
 
+  /// Whether the button is in loading state.
+  final bool isLoading;
+
   @override
   _BaseButtonState createState() => _BaseButtonState();
 }
 
 class _BaseButtonState extends BaseState<BaseButton> {
-  bool _isLoading = false;
+  late bool _isLoading = widget.isLoading;
   bool _isHovered = false;
   late bool _isActive;
 
@@ -95,10 +99,13 @@ class _BaseButtonState extends BaseState<BaseButton> {
     super.didUpdateWidget(oldWidget);
     if (widget.isActive != oldWidget.isActive ||
         widget.onPressed != oldWidget.onPressed) {
-      safeSetState(() {
-        _isActive = widget.isActive ?? widget.onPressed != null;
-      });
+      _isActive = widget.isActive ?? widget.onPressed != null;
+    } else if (widget.isLoading != oldWidget.isLoading) {
+      _isLoading = widget.isLoading;
+    } else {
+      return;
     }
+    safeSetState(() {});
   }
 
   Future<void> _onTap() async {

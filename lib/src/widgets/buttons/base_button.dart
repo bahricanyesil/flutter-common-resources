@@ -169,7 +169,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
   }
 
   double get _indicatorWidth =>
-      _buttonHeight - _buttonPadding.vertical - context.h(2.2);
+      _buttonHeight - _buttonPadding.vertical - context.h(1.8);
 
   double get _buttonHeight => widget.height ?? context.h(6.2);
 

@@ -117,7 +117,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
       borderRadius: BorderRadius.circular(widget.borderRadius),
       color: widget.color,
       child: InkWell(
-        onTap: _onTap,
+        onTap: _isActive && !_isLoading ? _onTap : null,
         onHover: (bool isHovering) {
           if (_isHovered == isHovering) return;
           setState(() {

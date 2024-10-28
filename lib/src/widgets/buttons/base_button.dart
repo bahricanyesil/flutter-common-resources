@@ -98,15 +98,13 @@ class _BaseButtonState extends BaseState<BaseButton> {
   void didUpdateWidget(covariant BaseButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.isActive != oldWidget.isActive ||
-        widget.onPressed != oldWidget.onPressed) {
-      _isActive = widget.isActive ?? widget.onPressed != null;
-    } else if (widget.isLoading != oldWidget.isLoading &&
-        widget.isLoading != null) {
-      _isLoading = widget.isLoading!;
-    } else {
-      return;
+        widget.onPressed != oldWidget.onPressed ||
+        widget.isLoading != oldWidget.isLoading) {
+      safeSetState(() {
+        _isActive = widget.isActive ?? widget.onPressed != null;
+        _isLoading = widget.isLoading!;
+      });
     }
-    safeSetState(() {});
   }
 
   Future<void> _onTap() async {

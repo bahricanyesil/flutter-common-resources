@@ -31,9 +31,14 @@ class ResponsiveProvider extends ChangeNotifier {
 
   /// MediaQuery and scaling values
   MediaQueryData? _mediaQuery;
-  double _widthScale = 1;
-  double _heightScale = 1;
+  double _widthScale = baseWidth / 100;
+  double _heightScale = baseHeight / 100;
   SizeDeviceType _deviceType = SizeDeviceType.unknown;
+
+  bool _initialized = false;
+
+  /// Gets whether the provider is initialized.
+  bool get initialized => _initialized;
 
   /// Initialize media query and scaling values
   void update(BuildContext context) {
@@ -47,6 +52,7 @@ class ResponsiveProvider extends ChangeNotifier {
     if (_mediaQuery == null ||
         widthDiff.abs() > _updateThreshold ||
         heightDiff.abs() > _updateThreshold) {
+      _initialized = true;
       _mediaQuery = mediaQuery;
       _widthScale = _mediaQuery!.size.width / 100;
       _heightScale = _mediaQuery!.size.height / 100;

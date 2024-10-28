@@ -102,7 +102,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
         widget.isLoading != oldWidget.isLoading) {
       safeSetState(() {
         _isActive = widget.isActive ?? widget.onPressed != null;
-        _isLoading = widget.isLoading!;
+        _isLoading = widget.isLoading ?? _isLoading;
       });
     }
   }

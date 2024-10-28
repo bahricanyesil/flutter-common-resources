@@ -13,6 +13,8 @@ base class NameField extends BaseStatefulWidget {
     this.validator,
     this.labelText,
     this.inputDecoration,
+    this.textInputAction,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -37,6 +39,12 @@ base class NameField extends BaseStatefulWidget {
   /// Custom input decoration.
   final InputDecoration? inputDecoration;
 
+  /// Text input action for the name field.
+  final TextInputAction? textInputAction;
+
+  /// Callback for when the field is submitted.
+  final ValueSetter<String>? onFieldSubmitted;
+
   @override
   BaseState<NameField> createState() => _NameFieldState();
 }
@@ -58,6 +66,8 @@ class _NameFieldState extends BaseState<NameField>
       autofillHints: const <String>[AutofillHints.name],
       autocorrect: false,
       validator: widget.validator,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 

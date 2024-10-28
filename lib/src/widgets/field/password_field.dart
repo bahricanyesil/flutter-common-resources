@@ -20,6 +20,8 @@ base class PasswordField extends BaseStatefulWidget {
     this.labelText,
     this.inputDecoration,
     this.suffixIconColor,
+    this.textInputAction,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -46,6 +48,12 @@ base class PasswordField extends BaseStatefulWidget {
 
   /// The color of the suffix icon.
   final Color? suffixIconColor;
+
+  /// Text input action for the name field.
+  final TextInputAction? textInputAction;
+
+  /// Callback for when the field is submitted.
+  final ValueSetter<String>? onFieldSubmitted;
 
   @override
   BaseState<PasswordField> createState() => _PasswordFieldState();
@@ -75,6 +83,8 @@ class _PasswordFieldState extends BaseState<PasswordField>
         enableSuggestions: false,
         autocorrect: false,
         validator: widget.validator,
+        textInputAction: widget.textInputAction,
+        onFieldSubmitted: widget.onFieldSubmitted,
       );
 
   BaseIconButton _obscureSuffixButton(BuildContext context) {

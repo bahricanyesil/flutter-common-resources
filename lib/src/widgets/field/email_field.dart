@@ -12,6 +12,8 @@ base class EmailField extends BaseStatefulWidget {
     this.validator,
     this.labelText,
     this.inputDecoration,
+    this.textInputAction,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -36,6 +38,12 @@ base class EmailField extends BaseStatefulWidget {
   /// Custom input decoration.
   final InputDecoration? inputDecoration;
 
+  /// Text input action for the name field.
+  final TextInputAction? textInputAction;
+
+  /// Callback for when the field is submitted.
+  final ValueSetter<String>? onFieldSubmitted;
+
   @override
   BaseState<EmailField> createState() => _EmailFieldState();
 }
@@ -57,6 +65,8 @@ class _EmailFieldState extends BaseState<EmailField>
       autofillHints: const <String>[AutofillHints.email],
       autocorrect: false,
       validator: widget.validator,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 

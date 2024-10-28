@@ -17,6 +17,8 @@ base class PhoneField extends BaseStatefulWidget {
     this.validator,
     this.labelText,
     this.inputDecoration,
+    this.textInputAction,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -40,6 +42,12 @@ base class PhoneField extends BaseStatefulWidget {
 
   /// Custom input decoration.
   final InputDecoration? inputDecoration;
+
+  /// Text input action for the name field.
+  final TextInputAction? textInputAction;
+
+  /// Callback for when the field is submitted.
+  final ValueSetter<String>? onFieldSubmitted;
 
   @override
   BaseState<PhoneField> createState() => _PhoneFieldState();
@@ -65,6 +73,8 @@ class _PhoneFieldState extends BaseState<PhoneField>
       autofillHints: const <String>[AutofillHints.telephoneNumber],
       autocorrect: false,
       validator: widget.validator,
+      textInputAction: widget.textInputAction,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 

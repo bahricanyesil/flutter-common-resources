@@ -17,9 +17,13 @@ base class BaseRichText extends RichText {
     TextStyle? style,
     AnyCallback? onClick,
     List<ReplaceText> replaceTexts = const <ReplaceText>[],
+    bool underline = false,
   }) : super(
           text: TextSpan(
-            style: style,
+            style: style?.copyWith(
+              decoration: underline ? TextDecoration.underline : null,
+              decorationColor: style.color,
+            ),
             children: <TextSpan>[
               TextSpan(
                 text: text,

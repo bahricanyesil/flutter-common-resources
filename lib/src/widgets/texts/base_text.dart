@@ -4,12 +4,18 @@ import 'package:flutter/material.dart';
 @immutable
 base class BaseText extends Text {
   /// Creates a new instance of the [BaseText].
-  const BaseText(
+  BaseText(
     super.text, {
-    super.style,
     super.textAlign,
     super.maxLines,
     super.overflow,
     super.key,
-  }) : super();
+    TextStyle? style,
+    bool underline = false,
+  }) : super(
+          style: style?.copyWith(
+            decoration: underline ? TextDecoration.underline : null,
+            decorationColor: style.color,
+          ),
+        );
 }

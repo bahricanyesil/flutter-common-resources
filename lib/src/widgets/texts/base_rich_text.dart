@@ -41,6 +41,7 @@ base class BaseRichText extends RichText {
       style: (e.style ?? const TextStyle()).copyWith(
         color: e.color,
         decoration: e.underline ? TextDecoration.underline : null,
+        decorationColor: e.color,
       ),
     );
   }

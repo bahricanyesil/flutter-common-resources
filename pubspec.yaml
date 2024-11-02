@@ -51,6 +51,9 @@ dependencies:
   # Loading
   flutter_spinkit: ^5.2.1
 
+  # Navigation
+  go_router: ^14.3.0
+
 dev_dependencies:
   # Lint
   lint_rules:

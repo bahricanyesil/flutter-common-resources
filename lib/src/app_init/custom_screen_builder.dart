@@ -6,8 +6,8 @@ abstract final class CustomScreenBuilder {
   /// Builds the screen with a custom error widget.
   static Widget defaultBuilder(
     BuildContext context,
-    Widget? child,
-    AnyCallback? onRetry, {
+    Widget? child, {
+    AnyCallback? onRetry,
     ScreenBuilderParams params = const ScreenBuilderParams(),
   }) {
     Widget error = CustomErrorWidget(

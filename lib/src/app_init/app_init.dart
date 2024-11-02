@@ -146,7 +146,7 @@ abstract final class AppInit {
         home: FailedAppInit(
           error: e,
           stackTrace: stackTrace,
-          retryInit: initAndRunApp,
+          onRetry: initAndRunApp,
         ),
       ),
     );

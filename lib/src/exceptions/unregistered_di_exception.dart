@@ -23,6 +23,6 @@ final class UnregisteredDIException implements Exception {
   String toString() {
     final String instanceNameStr =
         instanceName != null ? ' with name $instanceName' : '';
-    return '''Unregistered: No registered dependency of type $dependencyType$instanceNameStr. stackTrace: $stackTrace''';
+    return '''Unregistered: No registered dependency of type $dependencyType$instanceNameStr.''';
   }
 }

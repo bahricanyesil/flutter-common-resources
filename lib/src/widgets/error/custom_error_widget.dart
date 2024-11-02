@@ -107,12 +107,46 @@ class _CustomErrorWidgetState extends State<CustomErrorWidget> {
   }
 
   Text _errorMessage(TextTheme textTheme, ThemeData theme) {
-    return Text(
-      kDebugMode
-          ? 'Error:\n${widget.exception}\n\nStack trace:\n${widget.stackTrace}'
-          : 'The app encountered an unexpected error.',
-      style: textTheme.bodyMedium?.copyWith(
-        color: theme.colorScheme.onSurface.withOpacity(0.7),
+    if (!kDebugMode) {
+      return Text(
+        'The app encountered an unexpected error.',
+        style: textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface.withOpacity(0.7),
+        ),
+        textAlign: TextAlign.center,
+      );
+    }
+
+    return Text.rich(
+      TextSpan(
+        children: <TextSpan>[
+          TextSpan(
+            text: '~Error:~\n',
+            style: textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: theme.colorScheme.error,
+            ),
+          ),
+          TextSpan(
+            text: '${widget.exception}\n\n',
+            style: textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
+          TextSpan(
+            text: '~Stack trace:~\n',
+            style: textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: theme.colorScheme.error,
+            ),
+          ),
+          TextSpan(
+            text: '${widget.stackTrace}',
+            style: textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
+        ],
       ),
       textAlign: TextAlign.center,
     );

@@ -23,8 +23,7 @@ abstract final class CustomScreenBuilder {
     ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
       return CustomErrorWidget(
         title: params.errorTitle ?? _errorTitle,
-        exception:
-            Exception('${errorDetails.exception}\n\n${errorDetails.exception}'),
+        exception: errorDetails.exception,
         stackTrace: errorDetails.stack,
         onRetry: onRetry,
       );

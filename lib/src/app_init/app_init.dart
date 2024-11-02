@@ -54,11 +54,6 @@ abstract final class AppInit {
         /// Sets the system UI overlays.
         await _setSystemUIMode();
 
-        /// Sets the error handlers.
-        logManager?.setFlutterErrorHandlers(
-          dispatcher: PlatformDispatcher.instance,
-        );
-
         /// Sets the bloc observer to log bloc events.
         if (logManager != null) Bloc.observer = CustomBlocObserver(logManager);
 

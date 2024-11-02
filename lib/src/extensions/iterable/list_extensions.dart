@@ -4,4 +4,7 @@ extension ListExtensions<T> on List<T> {
   void addIfNotExists(T? element) {
     if (element != null && !contains(element)) add(element);
   }
+
+  /// Returns a new list with distinct elements.
+  List<T> distinct() => toSet().toList();
 }

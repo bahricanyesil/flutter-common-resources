@@ -10,6 +10,14 @@ typedef CustomParser<R, T> = R? Function(T? source);
 
 /// Extension on [Iterable] to provide additional functionality.
 extension NullableIterableExtensions<T> on Iterable<T?> {
+  /// Returns the first element of the iterable if it is not empty,
+  /// otherwise returns null.
+  T? get safeFirst => isNotEmpty ? first : null;
+
+  /// Returns the last element of the iterable if it is not empty,
+  /// otherwise returns null.
+  T? get safeLast => isNotEmpty ? last : null;
+
   /// Maps the elements of this iterable to a new iterable of type [R].
   Iterable<R> mapToIterable<R>(CustomParser<R, T> customParser) =>
       map<R?>((T? element) => element == null ? null : customParser(element))

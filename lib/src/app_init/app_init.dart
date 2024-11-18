@@ -37,7 +37,7 @@ abstract final class AppInit {
     LogManager? logManager,
     AsyncCallback? firebaseInitializer,
     AnyCallback? dependencyInitializer,
-    AnyCallback? localeInitializer,
+    AnyCallback? customInitializer,
     VoidCallback? mapperInitializer,
   }) async {
     Future<void> initAndRunApp() async {
@@ -67,7 +67,7 @@ abstract final class AppInit {
           mapperInitializer,
         );
 
-        await localeInitializer?.call();
+        await customInitializer?.call();
 
         runApp(appBuilder(result: result));
       } catch (e, stackTrace) {

@@ -42,4 +42,7 @@ abstract final class SafePlatformChecker {
 
   /// Returns the name of the current platform.
   static String get platformName => isWeb ? 'web' : defaultTargetPlatform.name;
+
+  /// Returns `true` if the current platform is Apple.
+  static bool get isApple => isIOS || isMacOS;
 }

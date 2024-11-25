@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_common_resources/src/extensions/context/theme_context_extensions.dart';
-import 'package:flutter_common_resources/src/responsive/responsiveness_extensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../constants/constants.dart';
@@ -146,9 +145,9 @@ class _BaseButtonState extends BaseState<BaseButton> {
 
   EdgeInsets get _buttonPadding =>
       widget.padding ??
-      EdgeInsets.symmetric(
-        horizontal: context.deviceW(2),
-        vertical: context.deviceH(1),
+      const EdgeInsets.symmetric(
+        horizontal: 4,
+        vertical: 1,
       );
 
   Center _stateSwitcher() {
@@ -172,15 +171,14 @@ class _BaseButtonState extends BaseState<BaseButton> {
     return SpinKitSpinningLines(color: Colors.white, size: _indicatorWidth);
   }
 
-  double get _indicatorWidth =>
-      _buttonHeight - _buttonPadding.vertical - context.h(1.8);
+  double get _indicatorWidth => _buttonHeight - _buttonPadding.vertical - 1.8;
 
-  double get _buttonHeight => widget.height ?? context.h(6.2);
+  double get _buttonHeight => widget.height ?? 6.2;
 
   double _buttonWidth(BuildContext context) {
-    final double activeWidth = widget.width ?? (context.deviceW(80));
+    final double activeWidth = widget.width ?? 80;
     return _isLoading
-        ? (widget.loadingWidth ?? (_indicatorWidth + context.deviceW(45)))
+        ? (widget.loadingWidth ?? (_indicatorWidth + 45))
         : activeWidth;
   }
 }

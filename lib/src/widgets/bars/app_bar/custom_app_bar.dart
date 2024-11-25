@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common_resources/src/extensions/context/context_extensions.dart';
-import 'package:flutter_common_resources/src/responsive/responsiveness_extensions.dart';
 
 /// A custom app bar widget.
 @immutable
@@ -19,25 +18,25 @@ class CustomAppBar extends AppBar {
           elevation: 0,
           backgroundColor: context.themeD.scaffoldBackgroundColor,
           automaticallyImplyLeading: false,
-          toolbarHeight: kToolbarHeight + context.deviceH(verticalMarginFactor),
+          toolbarHeight: kToolbarHeight + verticalMarginFactor,
           actions: <Widget>[
-            context.hBox(horizontalMarginFactor),
+            const SizedBox(width: 16),
             Expanded(
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: leadingWidget ?? const SizedBox.expand(),
               ),
             ),
-            context.hBox(spacingFactor),
+            const SizedBox(width: 16),
             centerWidget ?? const SizedBox.shrink(),
-            context.hBox(spacingFactor),
+            const SizedBox(width: 16),
             Expanded(
               child: Align(
                 alignment: Alignment.centerRight,
                 child: trailingWidget ?? const SizedBox.expand(),
               ),
             ),
-            context.hBox(horizontalMarginFactor),
+            const SizedBox(width: 16),
           ],
         );
 }

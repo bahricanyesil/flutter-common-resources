@@ -92,11 +92,9 @@ class _CodeFieldState extends State<CodeField> {
     final bool visibleDash = middleIndex == index && showDash;
     return Flexible(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.deviceW(0.8),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 4),
         child: visibleDash
-            ? BaseIcon(context, Icons.remove_outlined, size: context.deviceW(4))
+            ? BaseIcon(context, Icons.remove_outlined, size: 16)
             : _codeTextField(
                 (index > middleIndex && showDash) ? index - 1 : index,
               ),
@@ -182,9 +180,9 @@ class _CodeFieldState extends State<CodeField> {
   }
 
   InputDecoration _inputDeco() {
-    final double size = context.deviceW(11);
+    const double size = 16;
     return InputDecoration(
-      constraints: BoxConstraints.tight(Size(size, size)),
+      constraints: BoxConstraints.tight(const Size(size, size)),
       contentPadding: EdgeInsets.zero,
       isDense: false,
     );

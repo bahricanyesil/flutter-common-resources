@@ -29,12 +29,13 @@ abstract final class CustomScreenBuilder {
       );
     };
     if (child != null) {
-      if (!params.buildResponsive) return child;
-      return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return ResponsiveUpdaterWidget(child: child);
-        },
-      );
+      return child;
+      // if (!params.buildResponsive) return child;
+      // return LayoutBuilder(
+      //   builder: (BuildContext context, BoxConstraints constraints) {
+      //     return ResponsiveUpdaterWidget(child: child);
+      //   },
+      // );
     }
     throw StateError('Widget is null.');
   }

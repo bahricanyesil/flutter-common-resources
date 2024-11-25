@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_common_resources/src/extensions/extensions.dart';
-import 'package:flutter_common_resources/src/responsive/responsive.dart';
 
 import '../theme/default_app_colors.dart';
 import '../widgets/icons/icons.dart';
@@ -34,14 +33,13 @@ abstract final class CustomInputDecorations {
         contentPadding: padding,
         prefixIcon: prefixWidget ??
             Padding(
-              padding: EdgeInsets.only(left: context.w(4), right: context.w(2)),
+              padding: const EdgeInsets.only(left: 12, right: 6),
               child: BaseIcon(
                 context,
                 prefixIcon,
                 color: DefaultAppColors.primary,
               ),
             ),
-        constraints:
-            boxConstraints ?? BoxConstraints(maxWidth: context.deviceW(80)),
+        constraints: boxConstraints ?? const BoxConstraints(maxWidth: 400),
       );
 }

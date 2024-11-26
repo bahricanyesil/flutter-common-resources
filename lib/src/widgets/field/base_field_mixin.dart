@@ -88,7 +88,7 @@ mixin BaseFieldMixin<T extends BaseStatefulWidget> on BaseState<T> {
 
   void _onFocusChange() {
     if (!_isTouched) {
-      safeSetState(() => _isTouched = true);
+      setState(() => _isTouched = true);
     }
   }
 }

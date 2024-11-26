@@ -99,7 +99,7 @@ class _BaseButtonState extends BaseState<BaseButton> {
     if (widget.isActive != oldWidget.isActive ||
         widget.onPressed != oldWidget.onPressed ||
         widget.isLoading != oldWidget.isLoading) {
-      safeSetState(() {
+      setState(() {
         _isActive = widget.isActive ?? widget.onPressed != null;
         _isLoading = widget.isLoading ?? _isLoading;
       });
@@ -108,9 +108,9 @@ class _BaseButtonState extends BaseState<BaseButton> {
 
   Future<void> _onTap() async {
     if (_isActive && !_isLoading) {
-      if (widget.isLoading == null) safeSetState(() => _isLoading = true);
+      if (widget.isLoading == null) setState(() => _isLoading = true);
       await widget.onPressed?.call();
-      if (widget.isLoading == null) safeSetState(() => _isLoading = false);
+      if (widget.isLoading == null) setState(() => _isLoading = false);
     }
   }
 

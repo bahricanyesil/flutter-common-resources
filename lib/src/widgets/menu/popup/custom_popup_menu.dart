@@ -80,7 +80,7 @@ class _CustomPopupMenuState<T extends CustomPopupMenuItem>
     if (_selectedItem != value) {
       final bool isSet = await widget.onSelected(value);
       if (!isSet) return;
-      safeSetState(() => _selectedItem = value);
+      setState(() => _selectedItem = value);
     }
   }
 

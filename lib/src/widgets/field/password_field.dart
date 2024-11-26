@@ -89,7 +89,7 @@ class _PasswordFieldState extends BaseState<PasswordField>
 
   BaseIconButton _obscureSuffixButton(BuildContext context) {
     return BaseIconButton(
-      onPressed: () => safeSetState(() => _isObscure = !_isObscure),
+      onPressed: () => setState(() => _isObscure = !_isObscure),
       icon: BaseIcon(
         context,
         _isObscure ? Icons.visibility : Icons.visibility_off,

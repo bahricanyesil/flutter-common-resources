@@ -16,7 +16,9 @@ abstract class BaseState<T extends BaseStatefulWidget> extends State<T>
 /// Base state mixin for all stateful widgets
 mixin BaseStateMixin<T extends StatefulWidget> on State<T> {
   /// Safe set state method to prevent errors when the widget is unmounted
-  void safeSetState(VoidCallback fn) {
-    if (mounted) setState(fn);
+  @override
+  void setState(VoidCallback fn) {
+    fn();
+    if (mounted) super.setState(() {});
   }
 }

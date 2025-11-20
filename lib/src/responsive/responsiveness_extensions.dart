@@ -26,16 +26,19 @@
 
 //   /// Gets device specific factored width.
 //   double deviceW(double widthFactor) =>
-//       select((ResponsiveProvider p) => p.getDeviceDependentWidth(widthFactor));
+//       select((ResponsiveProvider p) =>
+// p.getDeviceDependentWidth(widthFactor));
 
 //   /// Gets device specific factored height.
 //   double deviceH(double heightFactor) => select(
-//         (ResponsiveProvider p) => p.getDeviceDependentHeight(heightFactor),
+//         (ResponsiveProvider p) =>
+// p.getDeviceDependentHeight(heightFactor),
 //       );
 
 //   /// Gets the device specific factored font size.
 //   double deviceFs(double fontSize) =>
-//       select((ResponsiveProvider p) => p.getDeviceDependentFontSize(fontSize));
+//       select((ResponsiveProvider p)
+//=> p.getDeviceDependentFontSize(fontSize));
 
 //   /// Gets whether the device is in portrait or landscape mode.
 //   bool get isPortrait => select((ResponsiveProvider p) => p.isPortrait);
@@ -53,7 +56,8 @@
 //   }) {
 //     return switch (sizeDeviceType) {
 //       SizeDeviceType.mobile => mobileBuilder(this),
-//       SizeDeviceType.tablet => tabletBuilder?.call(this) ?? mobileBuilder(this),
+//       SizeDeviceType.tablet =>
+//  tabletBuilder?.call(this) ?? mobileBuilder(this),
 //       SizeDeviceType.desktop =>
 //         desktopBuilder?.call(this) ?? mobileBuilder(this),
 //       SizeDeviceType.unknown =>

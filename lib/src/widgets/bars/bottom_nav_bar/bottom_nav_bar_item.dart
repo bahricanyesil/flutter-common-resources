@@ -18,7 +18,7 @@ class _BottomNavBarItem extends StatelessWidget {
       padding: CustomPaddings.symmetricMedium,
       child: InkWell(
         onTap: () => onTap(item),
-        splashColor: Theme.of(context).secondary.withOpacity(0.2),
+        splashColor: Theme.of(context).secondary.withValues(alpha: 0.2),
         borderRadius: CircularBorderRadii.medium,
         child: AnimatedBuilder(
           animation: animation,
@@ -41,7 +41,7 @@ class _BottomNavBarItem extends StatelessWidget {
       borderRadius: CircularBorderRadii.medium,
       child: ColoredBox(
         color: isSelected
-            ? Theme.of(context).secondary.withOpacity(0.2)
+            ? Theme.of(context).secondary.withValues(alpha: 0.2)
             : Colors.transparent,
         child: Padding(
           padding: CustomPaddings.verticalSmall,

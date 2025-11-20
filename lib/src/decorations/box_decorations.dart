@@ -21,7 +21,7 @@ abstract final class BoxDecorations {
   }) =>
       BoxDecoration(
         color: isActive
-            ? (isPressed ? color.withOpacity(0.8) : color)
+            ? (isPressed ? color.withValues(alpha: 0.8) : color)
             : (inactiveColor ?? DefaultAppColors.inactive),
         borderRadius: BorderRadius.circular(borderRadius ?? 8),
         boxShadow:

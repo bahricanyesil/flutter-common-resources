@@ -25,6 +25,7 @@ dependencies:
     git:
       url: https://github.com/bahricanyesil/flutter-advanced-template-v2.git
       path: packages/log_manager
+      ref: 20a866728e902f4e8b5a69a207ce787e6daa5098
 
   # Theme
   theme_manager:

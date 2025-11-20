@@ -5,5 +5,5 @@ extension TextStyleExtensions on TextStyle? {
   /// Copy the [TextStyle] with the given [color]
   /// and return the new [TextStyle].
   TextStyle? withOpacity(double opacity) =>
-      this?.copyWith(color: this?.color?.withOpacity(opacity));
+      this?.copyWith(color: this?.color?.withValues(alpha: opacity));
 }

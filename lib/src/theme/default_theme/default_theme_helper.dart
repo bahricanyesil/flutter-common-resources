@@ -170,7 +170,7 @@ abstract final class DefaultThemeHelper {
   static Color? _bgColorResolver(Set<WidgetState> states) =>
       states.contains(WidgetState.selected)
           ? DefaultAppColors.selectedColor
-          : DefaultAppColors.selectedColor.withOpacity(.6);
+          : DefaultAppColors.selectedColor.withValues(alpha: .6);
 
   /// Default input decoration theme for the app.
   static InputDecorationTheme defaultInputDecorationTheme(
@@ -266,11 +266,11 @@ abstract final class DefaultThemeHelper {
       );
 
   /// Default card theme for the app.
-  static CardTheme defaultCardTheme({
+  static CardThemeData defaultCardTheme({
     bool isDark = true,
     Color? color,
   }) =>
-      CardTheme(
+      CardThemeData(
         color: color ?? (isDark ? Colors.grey[800] : Colors.white),
         elevation: 4,
         margin: const EdgeInsets.all(8),

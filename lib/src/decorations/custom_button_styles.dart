@@ -14,7 +14,7 @@ abstract final class CustomButtonStyles {
 
   /// The slidable action style.
   static final ButtonStyle slidableActionStyle = OutlinedButton.styleFrom(
-    disabledForegroundColor: Colors.white.withOpacity(0.38),
+    disabledForegroundColor: Colors.white.withValues(alpha: 0.38),
     foregroundColor: Colors.white,
     shape: const RoundedRectangleBorder(),
     side: BorderSide.none,

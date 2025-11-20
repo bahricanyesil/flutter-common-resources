@@ -46,7 +46,8 @@
 //     final double newWidth = mediaQuery.size.width;
 //     final double newHeight = mediaQuery.size.height;
 
-//     final double widthDiff = (_mediaQuery?.size.width ?? newWidth) - newWidth;
+//     final double widthDiff = (_mediaQuery?.size.width ?? newWidth)
+//        - newWidth;
 //     final double heightDiff =
 //         (_mediaQuery?.size.height ?? newHeight) - newHeight;
 //     if (_mediaQuery == null ||

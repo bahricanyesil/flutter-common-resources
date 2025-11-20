@@ -39,10 +39,7 @@ class CustomBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase<Object?> bloc, Change<Object?> change) {
     super.onChange(bloc, change);
-    _logManager.lInfo(
-      'Bloc changed: ${bloc.runtimeType}, $change',
-      type: 'bloc',
-    );
+    _logManager.lInfo('Bloc changed: ${bloc.runtimeType}, $change');
   }
 
   @override

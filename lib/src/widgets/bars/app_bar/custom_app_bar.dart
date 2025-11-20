@@ -10,9 +10,7 @@ class CustomAppBar extends AppBar {
     Widget? leadingWidget,
     Widget? centerWidget,
     Widget? trailingWidget,
-    double horizontalMarginFactor = 4,
     double verticalMarginFactor = 1,
-    double spacingFactor = 4,
     super.key,
   }) : super(
           elevation: 0,

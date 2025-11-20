@@ -111,7 +111,7 @@ class _CustomErrorWidgetState extends State<CustomErrorWidget> {
       return Text(
         'The app encountered an unexpected error.',
         style: textTheme.bodyMedium?.copyWith(
-          color: theme.colorScheme.onSurface.withOpacity(0.7),
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
         ),
         textAlign: TextAlign.center,
       );
